@@ -1,0 +1,241 @@
+*, *::becore, *::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --max-width: 1100px;
+  
+  /* colors */
+  --background-color-500: #1a1c19;
+  --background-color-400: #222c23;
+  --background-color-300: #42424099;
+  --background-color-200: #a0a5a0;
+  --background-color-100: #e1e4dd;
+  --primary-color: #7adb8e;
+  --secondary-color: #ffb3ab;
+  --light-color-500: #e1e4de;
+  --light-color-600: #afb1ad;
+  --light-color-700: #8b9288;
+  
+  --transition: all 300ms ease-in;
+  --top: 50%;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: var(--background-color-500);
+  font-family: 'Poppins', sans-serif;
+}
+
+.header {
+  position: relative;
+  background-color: var(--background-color-400);
+  height: 6rem;
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(to top, var(--background-color-500) 0%, var(--background-color-400) 60%);
+}
+
+.header-container {
+  width: 90%;
+  max-width: var(--max-width);
+  /*background-color: red;*/
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/*.header-container */button {
+  position: relative;
+  padding: 0.25rem 1.25rem;
+  border: 2px solid var(--secondary-color);
+  border: none;
+  border-radius: 5px;
+  outline: none;
+  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
+  color: var(--background-color-400);
+  font-weight: 500;
+}
+
+.header-container button::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border: 1px solid var(--secondary-color);
+  border-radius: 5px;
+  transition: var(--transition);
+}
+.header-container button:hover::before {
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+}
+
+.section {
+  min-height: calc(100vh - 6rem);
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.section-image img {
+  width: 200px;
+}
+
+.section-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 90%;
+  max-width: var(--max-width);
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.section-image {
+  text-align: center;
+  background-color: ;
+}
+
+.section-content {
+  background-color: ;
+  text-align: center;
+}
+
+.section-content p {
+  font-size: 0.8em;
+  color: var(--light-color-600);
+}
+
+.section-content h2 {
+  font-size: 2rem;
+  background-image: linear-gradient(to top, var(--background-color-500) 0%, var(--primary-color) 80%);
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-text-fill-color: transparent;
+}
+  
+/*
+Login form
+*/
+
+.login,
+.register {
+  position: absolute;
+  top: -1000px;
+  opacity: 0;
+  transition: all 500ms ease-in;
+  background-color: var(--background-color-300);
+  min-height: 500px;
+  width: 90%;
+  border-radius: 20px;
+  /*border: 1px solid var(--primary-color);*/
+  display: flex;
+  justify-content: center;
+}
+
+.show-login-register {
+  top: 110%;
+  opacity: 1;
+}
+
+.black-overlay {
+  position: absolute;
+  top: 100%;
+  height: calc(100vh - 6rem);
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+
+.show-overlay {
+  display: block;
+}
+
+.login-container,
+.register-container {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-container h2,
+.register-container h2 {
+  color: var(--primary-color);
+  font-size: 1.7rem;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+.input-box {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  background-color:;
+  width: 100%;
+  gap: 0.5rem;
+}
+
+.input-box label {
+  position: absolute;
+  left: 5px;
+  font-size: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: var(--transition);
+  color: var(--light-color-600);
+}
+
+.input-box input {
+  color: var(--light-color-500);
+  width: 90%;
+  height: 1.6rem;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid var(--secondary-color);
+}
+
+.input-box input:focus {
+  background-color: transparent;
+}
+
+.input-box input:focus + label,
+.input-box input:valid + label,
+.input-box input:hover + label{
+  top: -50%;
+}
+
+.input-box i {
+  font-size: 1rem;
+  text-align: center;
+  color: var(--primary-color);
+}
+
+.login-form,
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: ;
+  width: 100%;
+  gap: 2.5rem;
+  height: 50%;
+  padding-top: 3rem;
+}
+
+
+
+
+
