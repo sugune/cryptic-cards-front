@@ -6,8 +6,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://kit.fontawesome.com/60018bc0e9.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./css/styles.css" />
   </head>
   <body>
     <header class="header">
@@ -22,14 +23,19 @@
           <h2>Login</h2>
           <form action="" class="login-form">
             <div class="input-box">
-              <input type="text" id="email" autocomplete="off" required/>
+              <input class="login-email-input" type="text" id="email" autocomplete="off" required/>
               <label for="email">Email</label>
               <i class="fa-solid fa-envelope"></i>
+              <div>error</div>
             </div>
             <div class="input-box">
-              <input type="password" id="password" required/>
+              <div class="password-input">
+                <input class="login-password-input" type="password" id="password" required/>
+                <i class="fa-solid fa-eye"></i>
+              </div>
               <label for="password">Password</label>
               <i class="fa-solid fa-lock"></i>
+              <div>error</div>
             </div>
             <button type="submit" class="login-submit-btn">Login</button>
           </form>
@@ -39,21 +45,27 @@
       <div class="register">
         <div class="register-container">
           <h2>Register</h2>
-          <form action="" class="register-form">
+          <form class="register-form">
             <div class="input-box">
-              <input type="text" id="username" autocomplete="off" required/>
+              <input class="register-username-input" type="text" id="username" autocomplete="off" required/>
               <label for="username">Username</label>
               <i class="fa-solid fa-user"></i>
+              <div>error</div>
             </div>
             <div class="input-box">
-              <input type="text" id="email" autocomplete="off" required/>
+              <input class="register-email-input" type="text" id="email" autocomplete="off" required/>
               <label for="email">Email</label>
               <i class="fa-solid fa-envelope"></i>
+              <div>error</div>
             </div>
             <div class="input-box">
-              <input type="password" id="password" required/>
+              <div class="password-input">
+                <input class="register-password-input" type="password" id="password" required/>
+                <i class="fa-solid fa-eye"></i>
+              </div>
               <label for="password">Password</label>
               <i class="fa-solid fa-lock"></i>
+              <div>error</div>
             </div>
             <button type="submit" class="register-submit-btn">Register</button>
           </form>
@@ -65,7 +77,7 @@
     <section class="section">
       <div class="section-container">
         <div class="section-image">
-          <img src="./images/logo-card-2.5.png" class="section-logo" alt="" />
+          <img src="./assets/images/logo-card-2.5.png" class="section-logo" alt="" />
         </div>
         <div class="section-content">
           <h2>Welcome</h2>
@@ -75,6 +87,6 @@
         </div>
       </div>
     </section>
-    <script type="text/javascript" src="./app.js" charset="utf-8"></script>
+    <script type="text/javascript" src="./js/app.js" charset="utf-8"></script>
   </body>
 </html>
