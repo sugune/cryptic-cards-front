@@ -122,8 +122,9 @@ export class Theme {
           lightColor700: "#8b9288",
           primaryColor: "#7adb8e",
           secondaryColor: "#ffb3ab",
-          smallLogo: 'logo-small-2.5.png',
-          bigLogo: 'logo-card-2.5.png'
+          smallLogo: 'green-apple-small.png',
+          bigLogo: 'green-apple.png',
+          focusedTheme: '.green-apple-background'
         }
         
     return localStorage.setItem('themeProperties', JSON.stringify(theme));

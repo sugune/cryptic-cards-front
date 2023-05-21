@@ -115,24 +115,80 @@ class UI {
       
       
       if (e.target.matches('#green-apple')) {
-        themeProperties.smallLogo = 'logo-small-2.5.png';
-        themeProperties.bigLogo = 'logo-card-2.5.png';
+        themeProperties.smallLogo = 'green-apple-small.png';
+        themeProperties.bigLogo = 'green-apple.png';
         themeProperties.focusedTheme = '.green-apple-background';
         this.setTheme(themeProperties);
         Theme.setTheme(themeProperties)
         
       }
       if (e.target.matches('#midnight-dusk')) {
-        themeProperties.smallLogo = 'logo-small-3.5.png';
-        themeProperties.bigLogo = 'logo-card-3.5.png';
+        themeProperties.smallLogo = 'midnight-dusk-small.png';
+        themeProperties.bigLogo = 'midnight-dusk.png';
         themeProperties.focusedTheme = '.midnight-dusk-background';
         this.setTheme(themeProperties);
         Theme.setTheme(themeProperties)
         
       }
+      if (e.target.matches('#strawberry-daiquiri')) {
+        themeProperties.smallLogo = 'strawberry-daiquiri-small.png';
+        themeProperties.bigLogo = 'strawberry-daiquiri.png';
+        themeProperties.focusedTheme = '.strawberry-daiquiri-background';
+        this.setTheme(themeProperties);
+        Theme.setTheme(themeProperties)
+        
+      }
+      if (e.target.matches('#tako')) {
+        themeProperties.smallLogo = 'tako-small.png';
+        themeProperties.bigLogo = 'tako.png';
+        themeProperties.focusedTheme = '.tako-background';
+        this.setTheme(themeProperties);
+        Theme.setTheme(themeProperties)
+        
+      }
+      if (e.target.matches('#teal-and-turquoise')) {
+        themeProperties.smallLogo = 'teal-and-turquoise-small.png';
+        themeProperties.bigLogo = 'teal-and-turquoise.png';
+        themeProperties.focusedTheme = '.teal-and-turquoise-background';
+        this.setTheme(themeProperties);
+        Theme.setTheme(themeProperties)
+        
+      }
+      if (e.target.matches('#tidal-wave')) {
+        themeProperties.smallLogo = 'tidal-wave-small.png';
+        themeProperties.bigLogo = 'tidal-wave.png';
+        themeProperties.focusedTheme = '.tidal-wave-background';
+        this.setTheme(themeProperties);
+        Theme.setTheme(themeProperties)
+        
+      }
+      if (e.target.matches('#yin-and-yang')) {
+        themeProperties.smallLogo = 'yin-and-yang-small.png';
+        themeProperties.bigLogo = 'yin-and-yang.png';
+        themeProperties.focusedTheme = '.yin-and-yang-background';
+        this.setTheme(themeProperties);
+        Theme.setTheme(themeProperties)
+        
+      }
+      if (e.target.matches('#yotsuba')) {
+        themeProperties.smallLogo = 'yotsuba-small.png';
+        themeProperties.bigLogo = 'yotsuba.png';
+        themeProperties.focusedTheme = '.yotsuba-background';
+        this.setTheme(themeProperties);
+        Theme.setTheme(themeProperties)
+        
+      }
+      if (e.target.matches('#natural-sky')) {
+        themeProperties.smallLogo = 'natural-sky-small.png';
+        themeProperties.bigLogo = 'natural-sky.png';
+        themeProperties.focusedTheme = '.natural-sky-background';
+        this.setTheme(themeProperties);
+        Theme.setTheme(themeProperties)
+        
+      }
       if (e.target.matches('#lavender')) {
-        themeProperties.smallLogo = 'logo-small-4.5.png';
-        themeProperties.bigLogo = 'logo-card-4.5.png';
+        themeProperties.smallLogo = 'lavender-small.png';
+        themeProperties.bigLogo = 'lavender.png';
         themeProperties.focusedTheme = '.lavender-background';
         this.setTheme(themeProperties);
         Theme.setTheme(themeProperties)
