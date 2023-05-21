@@ -1,3 +1,5 @@
+import {TokenStorage, Request, Theme} from './utility.js';
+
 
 const login = document.querySelector('.login');
 const register = document.querySelector('.register');
@@ -121,17 +123,19 @@ class UI {
       console.log(data);
       
       const res = await Request.postReq(url, data);
+      console.log(res)
       
       // handling errors
-      const errorMessage = res.response.data.message;
+      
+      const errorMessage = res.hasOwnProperty('response') ? res.response.data.message : '';
+      console.log(errorMessage);
       let formInput = '';
       const regexEmail = /email/i;
       const regexPassword = /password/i;
       const regexUsername = /username/i;
-      console.log(res)
       
-      
-      if (form === 'login') {
+      if (form === 'login' && errorMessage) {
+        console.log('error 1');
         if (regexEmail.test(errorMessage)) {
           formInput = loginEmailInput;
         } else if (regexPassword.test(errorMessage)) {
@@ -140,7 +144,7 @@ class UI {
         this.displayError(errorMessage, formInput);
       }
       
-      if (form === 'register') {
+      if (form === 'register' && errorMessage) {
         
         if (regexEmail.test(errorMessage)) {
           this.displayError(errorMessage, registerEmailInput);
@@ -184,6 +188,7 @@ class UI {
       
       console.log(res)
       const token = res.data.token;
+      console.log(token)
       if (token) {
         TokenStorage.saveToken(token);
         window.location.href = './pages/home.html';
@@ -195,7 +200,13 @@ class UI {
   
   displayError(message, element) {
     const parent = element.parentNode;
-    const error = parent.lastElementChild;
+    let error = parent.lastElementChild;
+    if (element === loginPasswordInput) {
+      error = element.parentNode.parentNode.lastElementChild;
+    }
+    if (element === registerPasswordInput) {
+      error = element.parentNode.parentNode.lastElementChild;
+    }
     console.log(error)
     error.classList.add('error');
     error.innerHTML = message;
@@ -225,72 +236,38 @@ class UI {
     })
   }
   
+  setTheme(themeProperties) {
+    const root = document.documentElement;
+    const sectionLogo = document.querySelector('.section-image img');
+    
+    sectionLogo.src = `./assets/logos/${themeProperties.bigLogo}`;
+    
+    root.style.setProperty('--primary-color', themeProperties.primaryColor);
+    root.style.setProperty('--secondary-color', themeProperties.secondaryColor);
+    root.style.setProperty('--background-color-500', themeProperties.background500);
+    root.style.setProperty('--background-color-400', themeProperties.background400);
+    root.style.setProperty('--background-color-300', themeProperties.background300);
+    root.style.setProperty('--background-color-300-0', themeProperties.background3000);
+    root.style.setProperty('--light-color-500', themeProperties.lightColor500);
+    root.style.setProperty('--light-color-600', themeProperties.lightColor600);
+    root.style.setProperty('--light-color-700', themeProperties.lightColor700);
+  }
+  
   
 }
 
 
 
 
-class TokenStorage {
-  static saveToken(token) {
-    return localStorage.setItem('token', token);
-  }
-  
-  static getToken() {
-    return localStorage.getItem('token');
-  }
-}
 
-class Request {
-  static async getReq(url) {
-    try {
-      const res = await axios.get(url);
-      return res;
-    } catch(err) {
-      return err
-      console.log(err);
-    }
-  }
-  static async getAllReq(url) {
-    try {
-      const res = await axios.get(url);
-      return res;
-    } catch(err) {
-      return err
-      console.log(err);
-    }
-  }
-  static async postReq(url, data) {
-    try {
-      const res = await axios.post(url, data);
-      return res;
-    } catch(err) {
-      return err
-      console.log(err);
-    }
-  }
-  static async updateReq(url) {
-    try {
-      const res = await axios.get(url, data);
-      return res;
-    } catch(err) {
-      return err
-      console.log(err);
-    }
-  }
-  static async deleteReq(url) {
-    try {
-      const res = await axios.delete(url);
-      return res;
-    } catch(err) {
-      return err
-      console.log(err);
-    }
-  }
-}
+
 
 
 window.addEventListener('DOMContentLoaded', () => {
+  if(!Theme.getTheme()) Theme.setTheme();
+  const themeProperties = Theme.getTheme();
+  
   const ui = new UI;
+  ui.setTheme(themeProperties);
   ui.formFunctionality();
 });

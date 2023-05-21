@@ -1,0 +1,101 @@
+*, *::becore, *::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --max-width: 1100px;
+  --background-color-500: #333;
+  
+  /* colors 
+  --background-color-500: #1a1c19;
+  --background-color-500: #16151d;
+  --background-color-500: #111129;
+  
+  --background-color-400: #222c23;
+  --background-color-400: #19131d;
+  --background-color-400: #1d193b;
+  
+  --background-color-300: #424240aa;
+  --background-color-300: #3f3e44aa;
+  --background-color-300: #3a3c53aa;
+  
+  --background-color-300-0: #424240dd;
+  --background-color-300-0: #3f3e44dd;
+  --background-color-300-0: #3a3c53dd;
+  
+
+  --primary-color: #7adb8e;
+  --primary-color: #ef2475;
+  --primary-color: #a177ff;
+  
+  --secondary-color: #ffb3ab;
+  --secondary-color: #55971c;
+  --secondary-color: #5d25e0;
+  
+  
+  --light-color-500: #e1e4de;
+  --light-color-500: #e6e1e5;
+  --light-color-500: #dee8ff;
+  
+  --light-color-600: #afb1ad;
+  
+  --light-color-700: #8b9288;
+  --light-color-700: #9f8c8f;
+  --light-color-700: #6e4dbf;
+  */
+  
+  
+  --transition: all 300ms ease-in;
+  --top: 50%;
+  --border-radius-500: 20px;
+  
+  --gradient-heading-100: linear-gradient(to top, var(--background-color-500) 0%, var(--primary-color) 80%);
+  --gradient-100: linear-gradient(to bottom, var(--primary-color) 50%, var(--secondary-color) 80%);
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  background-color: var(--background-color-500);
+  font-family: 'Poppins', sans-serif;
+}
+
+button {
+  position: relative;
+  padding: 0.25rem 1.25rem;
+  border: 2px solid var(--secondary-color);
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
+  color: var(--background-color-400);
+  font-weight: 500;
+  transition: var(--transition);
+  transform: scale(1);
+  letter-spacing: 0.1rem;
+}
+
+.input-box div {
+  display: none;
+}
+
+div.error {
+  background-color: #ffcccc;
+  background-color: var(--light-color-700);
+  border-radius: 3px;
+  border: 1px solid #cc0000;
+  width: 80%;
+  min-height: 85%;
+  position: absolute;
+  top: 110%;
+  color: var(--background-color-500);
+  color: #cc0000;
+  font-size: 0.8em;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+  z-index: 10;
+}

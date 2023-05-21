@@ -3,10 +3,263 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>home</title>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://kit.fontawesome.com/60018bc0e9.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./global.css"/>
+    <link rel="stylesheet" href="./home.css"/>
   </head>
   <body>
-    <h1>i love dada</h1>
-    <script src="./app.js" ></script>
+    <header class="home-header">
+      <div class="home-header-container">
+        <div class="home-header-image">
+          <img src="./logo-small-.5.png" alt="logo"/>
+        </div>
+        <div class="create-deck">
+          <i class="fa-solid fa-plus"></i>
+        </div>
+      </div>
+      
+      <div class="profile-overlay"></div>
+      <div class="profile-container">
+        
+        <div class="profile">
+          
+          <div class="profile-cell profile-logo">
+            <img src="./logo-card-.5.png" alt="logo"/>
+          </div>
+          
+          <div class="profile-cell profile-username">
+            <span>angelika kate</span>
+          </div>
+          
+          <div class="profile-cell theme-setting">
+            <span>
+              Theme
+            </span>
+          </div>
+          
+          <div class="profile-cell table">
+            <span>
+              Table
+            </span>
+          </div>
+          
+          <div class="profile-cell profile-logout">
+            <button class="profile-logout-btn">Logout</button>
+          </div>
+          
+        </div>
+      </div>
+      
+      <div class="black-overlay"></div>
+      <div class="deck-window create-deck-window">
+        <h2>Create Deck</h2>
+        <form action="" class="deck-window-form">
+          <div class="input-box">
+            <input class="deck-name-input create-deck-name-input" type="text" id="deck-name" required>
+            <label for="deck-name">Deck Name</label>
+            <div class="">error</div>
+          </div>
+          <div class="input-box">
+            <input class="deck-description-input create-description-input" type="text" id="deck-description" required>
+            <label for="deck-description">Description  (--optional)</label>
+            <div class="">error</div>
+          </div>
+          <button class="create-form-btn" type="submit">Create</button>
+        </form>
+      </div>
+      
+      <div class="deck-window edit-deck-window">
+        <h2>Edit Deck</h2>
+        <form action="" class="deck-window-form">
+          <div class="input-box">
+            <input class="deck-name-input edit-deck-name-input" type="text" id="deck-name" required>
+            <label for="deck-name">Edit Deck Name</label>
+            <div class="">error</div>
+          </div>
+          <div class="input-box">
+            <input class="deck-description-input edit-description-input" type="text" id="deck-description" required>
+            <label for="deck-description">Edit Description  (--optional)</label>
+            <div class="">error</div>
+          </div>
+          <button class="edit-form-btn" type="submit">Edit</button>
+        </form>
+      </div>
+      
+      <div class="fixed-black-overlay"></div>
+      <div class="options-container">
+        <div class="options">
+          <i class="fa-solid fa-xmark options-x-btn"></i>
+          <div class="edit-option">
+            Edit <i class="fa-solid fa-pen-to-square"></i> 
+          </div>
+          <div class="delete-option">
+            Delete <i class="fa-solid fa-trash"></i> 
+          </div>
+        </div>
+      </div>
+      
+      <div class="confirmation-modal-overlay"></div>
+      <div class="confirmation-modal">
+        <p>Are you sure?</p>
+        <div>
+          <span>Yes</span>
+          <span>No</span>
+        </div>
+      </div>
+      
+      <div class="theme-overlay"></div>
+      <div class="theme-container">
+        <div class="theme">
+          <h3>Themes</h3>
+          <div class="theme-grid">
+            
+            <div class="theme-cell green-apple-container">
+              <div id='green-apple' class="green-apple-background">
+                <div id='green-apple' class="green-apple">
+                  <div id='green-apple' class="secondary"></div>
+                  <div id='green-apple' class="primary"></div>
+                </div>
+              </div>
+              <span>green apple</span>
+            </div>
+            
+            <div class="theme-cell midnight-dusk-container">
+              <div id='midnight-dusk' class="midnight-dusk-background">
+                <div id='midnight-dusk' class="midnight-dusk">
+                  <div id='midnight-dusk' class="secondary"></div>
+                  <div id='midnight-dusk' class="primary"></div>
+                </div>
+              </div>
+              <span>midnight dusk</span>
+            </div>
+            
+            <div class="theme-cell lavender-container">
+              <div id='lavender' class="lavender-background">
+                <div id='lavender' class="lavender">
+                  <div id='lavender' class="secondary"></div>
+                  <div id='lavender' class="primary"></div>
+                </div>
+              </div>
+              <span>lavender</span>
+            </div>
+            
+            <div class="theme-cell strawberry-daiquiri-container">
+              <div class="strawberry-daiquiri-background">
+                <div class="strawberry-daiquiri">
+                  <div class="secondary"></div>
+                  <div class="primary"></div>
+                </div>
+              </div>
+              <span>strawberry daiquiri</span>
+            </div>
+            
+            <div class="theme-cell tako-container">
+              <div class="tako-background">
+                <div class="tako">
+                  <div class="secondary"></div>
+                  <div class="primary"></div>
+                </div>
+              </div>
+              <span>tako</span>
+            </div>
+            
+            <div class="theme-cell teal-&-turquoise-container">
+              <div class="teal-&-turquoise-background">
+                <div class="teal-&-turquoise">
+                  <div class="secondary"></div>
+                  <div class="primary"></div>
+                </div>
+              </div>
+              <span>teal & turquoise</span>
+            </div>
+            
+            <div class="theme-cell tidal-wave-container">
+              <div class="tidal-wave-background">
+                <div class="tidal-wave">
+                  <div class="secondary"></div>
+                  <div class="primary"></div>
+                </div>
+              </div>
+              <span>tidal wave</span>
+            </div>
+            
+            <div class="theme-cell yin-&-yang-container">
+              <div class="yin-&-yang-background">
+                <div class="yin-&-yang">
+                  <div class="secondary"></div>
+                  <div class="primary"></div>
+                </div>
+              </div>
+              <span>yin & yang</span>
+            </div>
+            
+            <div class="theme-cell yotsuba-container">
+              <div class="yotsuba-background">
+                <div class="yotsuba">
+                  <div class="secondary"></div>
+                  <div class="primary"></div>
+                </div>
+              </div>
+              <span>yotsuba</span>
+            </div>
+            
+            <div class="theme-cell natural-sky-container">
+              <div class="natural-sky-background">
+                <div class="natural-sky">
+                  <div class="secondary"></div>
+                  <div class="primary"></div>
+                </div>
+              </div>
+              <span>natural sky</span>
+            </div>
+            
+          </div>
+        </div>
+      </div>
+      
+    </header>
+    
+    <main class="deck-section">
+      <h2>Deck</h2>
+      <div class="deck-section-container">
+       <!-- <div class="deck">
+          <div class="deck-title">
+            <div class="deck-tag">
+              <span>1</span>
+            </div>
+            <h2>Dada</h2>
+            <p>dada is the cutest</p>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </div>
+          <div class="deck-items">
+            <p>items</p>
+            <span>26</span>
+          </div>
+        </div>
+
+        <div class="deck">
+          <div class="deck-title">
+            <div class="deck-tag">
+              <span>1</span>
+            </div>
+            <h2>Dada</h2>
+            <p>dada is the cutest</p>
+            <i class="fa-solid fa-ellipsis-vertical"></i>
+          </div>
+          <div class="deck-items">
+            <p>items</p>
+            <span>26</span>
+          </div>
+        </div>-->
+      </div>
+    </main>
+    
+    
+    
+    <script type="module" src="home.js" charset="utf-8"></script>
   </body>
 </html>

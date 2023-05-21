@@ -1,34 +1,4 @@
-*, *::becore, *::after {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
 
-:root {
-  --max-width: 1100px;
-  
-  /* colors */
-  --background-color-500: #1a1c19;
-  --background-color-400: #222c23;
-  --background-color-300: #42424099;
-  --background-color-200: #a0a5a0;
-  --background-color-100: #e1e4dd;
-  --primary-color: #7adb8e;
-  --secondary-color: #ffb3ab;
-  --light-color-500: #e1e4de;
-  --light-color-600: #afb1ad;
-  --light-color-700: #8b9288;
-  
-  --transition: all 300ms ease-in;
-  --top: 50%;
-}
-
-body {
-  padding: 0;
-  margin: 0;
-  background-color: var(--background-color-500);
-  font-family: 'Poppins', sans-serif;
-}
 
 .header {
   position: relative;
@@ -46,19 +16,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-/*.header-container */button {
-  position: relative;
-  padding: 0.25rem 1.25rem;
-  border: 2px solid var(--secondary-color);
-  border: none;
-  border-radius: 4px;
-  outline: none;
-  background-color: var(--secondary-color);
-  background-color: var(--primary-color);
-  color: var(--background-color-400);
-  font-weight: 500;
 }
 
 .header-container button::before {
@@ -117,7 +74,7 @@ body {
 
 .section-content h2 {
   font-size: 2rem;
-  background-image: linear-gradient(to top, var(--background-color-500) 0%, var(--primary-color) 80%);
+  background-image: var(--gradient-heading-100);
   -webkit-background-clip: text;
   -moz-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -133,11 +90,11 @@ Login form
   position: absolute;
   top: -1000px;
   opacity: 0;
-  transition: all 500ms ease-in;
+  transition: all 500ms ease;
   background-color: var(--background-color-300);
   min-height: 500px;
   width: 90%;
-  border-radius: 20px;
+  border-radius: var(--border-radius-500);
   /*border: 1px solid var(--primary-color);*/
   display: flex;
   justify-content: center;
@@ -278,27 +235,6 @@ Login form
   padding-top: 3rem;
 }
 
-.input-box div {
-  display: none;
-}
-
-div.error {
-  background-color: #ffcccc;
-  background-color: var(--light-color-700);
-  border-radius: 3px;
-  border: 1px solid #cc0000;
-  width: 80%;
-  min-height: 85%;
-  position: absolute;
-  top: 110%;
-  color: var(--background-color-500);
-  color: #cc0000;
-  font-size: 0.8em;
-  display: flex;
-  align-items: center;
-  padding: 0 10px;
-  z-index: 10;
-}
 
 form button {
   margin: 0.5rem;
