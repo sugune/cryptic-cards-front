@@ -33,10 +33,11 @@ export class Request {
     }
   }
   
-  static async getAllReq(url, token) {
+  static async getAllReq(url, token, deckId) {
     let config = {
       headers: {
-        Authorization: `Bearer ${token}` 
+        Authorization: `Bearer ${token}`,
+        DeckId: deckId
       }
     }
     
@@ -138,3 +139,4 @@ export class Theme {
   
 
 export const deckUrl = 'http://localhost:3000/api/v1/deck/';
+export const cardUrl = 'http://localhost:3000/api/v1/card/';

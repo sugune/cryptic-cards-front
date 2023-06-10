@@ -189,6 +189,7 @@ class UI {
       console.log(res)
       const token = res.data.token;
       console.log(token)
+      localStorage.setItem('username', res.data.username);
       if (token) {
         TokenStorage.saveToken(token);
         window.location.href = './pages/home.html';

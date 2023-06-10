@@ -31,6 +31,7 @@ const headerLogo = document.querySelector('.home-header-image img');
 const profileContainer = document.querySelector('.profile-container');
 const profileOverlay = document.querySelector('.profile-overlay');
 const profileLogoutBtn = document.querySelector('.profile-logout-btn');
+const profileUsername = document.querySelector('.profile-username span');
 
 const themeContainer = document.querySelector('.theme-container');
 const themeOverlay = document.querySelector('.theme-overlay');
@@ -41,6 +42,7 @@ const themeGrid = document.querySelector('.theme-grid');
 //const token = 'b'
 const token = TokenStorage.getToken();
 let deckId = '';
+let initialDeckname;
 
 class UI {
   
@@ -90,6 +92,9 @@ class UI {
   
   profileFunctionality() {
     
+    const username = localStorage.getItem('username');
+    profileUsername.innerHTML = username;
+    
     headerLogo.addEventListener('click', () => {
       if (!createDeckWindow.matches('.show-deck-window') && !editDeckWindow.matches('.show-deck-window') && !themeContainer.matches('.show-theme-container')) {
         this.toggleProfile()
@@ -98,6 +103,7 @@ class UI {
     
     profileLogoutBtn.addEventListener('click', () => {
       TokenStorage.removeToken();
+      localStorage.removeItem('username');
       window.location.href = '../index.html';
     });
     
@@ -199,8 +205,8 @@ class UI {
   }
   
   confirmationModalFunctionality() {
-    yesConfirmation.addEventListener('click', () => {
-      this.removeElement(deckId);
+    yesConfirmation.addEventListener('click', async () => {
+      await this.removeElement(deckId);
       this.toggleConfirmationModal();
       this.toggleOptionsWindow();
       this.displayTags()
@@ -219,12 +225,21 @@ class UI {
         console.log('angelika')
         
     });
-    
+  }
+  
+  deckCardsNavigation(deckItemNavigator) {
+    deckItemNavigator.addEventListener('click', () => {
+      setTimeout(function() {
+        window.location.href = './deck.html';
+      }, 300);
+      localStorage.setItem('deckId', deckItemNavigator.id);
+    });
   }
   
   async populateEditWindow() {
     const res = await Request.getReq(`${deckUrl}${deckId}`, token);
     const deck = res.data.deck;
+    initialDeckname = deck.deckname;
     
     editDeckNameInput.value = deck.deckname;
     editDescriptionInput.value = deck.description;
@@ -288,7 +303,7 @@ class UI {
     
     const res = await Request.postReq(deckUrl, data, token);
     const newDeck = res.data;
-    
+    console.log(res)
     // handling the errors
     if (res.response && res.response.status === 400) {
       const deckNameRegex = /deckname/i;
@@ -317,12 +332,13 @@ class UI {
     e.preventDefault();
     
     let data = {
-      deckname: editDeckNameInput.value,
       description: editDescriptionInput.value
     }
     
+    if (editDeckNameInput.value !== initialDeckname) data.deckname = editDeckNameInput.value;
+    
     const res = await Request.updateReq(`${deckUrl}${deckId}`, data, token);
-    const newDeck = res.data.deck;
+    console.log(res)
     
     // handling the errors
     if (res.response && res.response.status === 400) {
@@ -339,6 +355,7 @@ class UI {
       });
       return;
     }
+    const newDeck = res.data.deck;
     
     this.toggleEditDeckWindow();
     this.editDeck(newDeck);
@@ -361,13 +378,15 @@ class UI {
           <p>${deck.description}</p>
           <i class="fa-solid fa-ellipsis-vertical" id="${deck._id}"></i>
         </div>
-          <div class="deck-items">
+        <div id="${deck._id}" class="deck-items">
             <p>items</p>
           <span>26</span>
         </div>
       
       `;
       const deckOption = div.querySelector('.fa-ellipsis-vertical');
+      const deckItemNavigator = div.querySelector('.deck-items');
+      this.deckCardsNavigation(deckItemNavigator);
       this.deckOptionsFunctionality(deckOption)
       deckSectionContainer.appendChild(div);
     });
@@ -385,16 +404,15 @@ class UI {
           <p>${deck.description}</p>
           <i class="fa-solid fa-ellipsis-vertical" id="${deck._id}"></i>
         </div>
-          <div class="deck-items">
+          <div id="${deck._id}" class="deck-items">
             <p>items</p>
           <span>26</span>
         </div>
       `;
     const deckOption = element.querySelector('.fa-ellipsis-vertical');
-    deckOption.addEventListener('click', () => {
-      deckId = deckOption.id;
-      this.toggleOptionsWindow();
-    });
+    const deckItemNavigator = element.querySelector('.deck-items');
+    this.deckCardsNavigation(deckItemNavigator);
+    this.deckOptionsFunctionality(deckOption);
   }
   
   displayTags() {
@@ -453,8 +471,8 @@ class UI {
     console.log(themeBackground)
     themeBackground.classList.add('focus-theme')
     
-    headerLogo.src = `./${themeProperties.smallLogo}`
-    profileLogo.src = `./${themeProperties.bigLogo}`
+    headerLogo.src = `../assets/logos/${themeProperties.smallLogo}`
+    profileLogo.src = `../assets/logos/${themeProperties.bigLogo}`
     
     root.style.setProperty('--primary-color', themeProperties.primaryColor);
     root.style.setProperty('--secondary-color', themeProperties.secondaryColor);

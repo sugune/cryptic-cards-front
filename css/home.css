@@ -134,13 +134,6 @@ Create create-deck Window
   color: var(--light-color-600); 
 }
 
-.deck-form-btn:hover {
-  transform: scale(1.075);
-}
-.deck-form-btn {
-  margin-top: 1rem;
-}
-
 .deck-window-form .input-box input:hover ~ label,
 .deck-window-form .input-box input:focus ~ label,
 .deck-window-form .input-box input:valid ~ label {
@@ -159,7 +152,7 @@ body {
 
 .deck-section {
   height: calc(100vh - 6rem);
-  width: 90%;
+  width: 100%;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -188,13 +181,18 @@ body {
   grid-auto-rows: 100px;
   gap: 1rem 3rem;
   overflow: scroll;
+  justify-items: center;
+  min-height: calc(100vh - 15rem);
+  padding-bottom: 5rem;
 }
 
 .deck {
   background-color: ;
   display: flex;
   overflow: hidden;
+  width: 90%;
   border-radius: 20px;
+  box-shadow: var(--shadow-100);
 }
 
 .deck-title {
@@ -202,8 +200,9 @@ body {
   background-image: var(--gradient-10);
   background-color: var(--secondary-color);
   background-color: var(--background-color-300);
-  flex-grow: 1;
   position: relative;
+  width: 70%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -219,13 +218,26 @@ body {
 }
 
 .deck-title h2 {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: calc(100% - 2rem);
   color: var(--secondary-color);
+  font-family: tsuki;
+  font-size: 2rem;
+  letter-spacing: 2px;
   border-bottom: 1px solid var(--secondary-color);
 }
 
 .deck-title p {
+  position: absolute;
+  top: 65%;
+  overflow: scroll;
+  word-break: break-all;
+  max-height: 30%;
   color: var(--light-color-700);
   font-size: .8rem;
+  background-color: ;
 }
 
 .deck-title i {
@@ -266,7 +278,26 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  z-index : 1;
+  position: relative;
 }
+
+.deck-items::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: var(--secondary-color);
+  z-index: -1;
+  transition: all 300ms ease;
+  transform: scaleX(0);
+}
+
+.deck-items:hover::before {
+  transform: scaleX(1);
+}
+
+
 
 .deck-items p,
 .deck-item span {
@@ -293,6 +324,7 @@ body {
   top: 0;
   left: 0;
   transform: translate(-50%, -50%) rotate(45deg);
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, .15);
 }
 
 .deck-tag span {
@@ -391,7 +423,7 @@ Options
   background-color: var(--light-color-700);
   z-index: -1;
   transition: all 100ms ease-in;
-  transform: scale(0);
+  transform: scaleX(0);
   opacity: 0;
 }
 
@@ -399,7 +431,7 @@ Options
 .delete-option:hover::before,
 .confirmation-modal div span:first-child:hover::before,
 .confirmation-modal div span:last-child:hover::before{
-  transform: scale(1);
+  transform: scaleX(1);
   opacity: 1;
 }
 
@@ -630,6 +662,7 @@ Theme
   align-items: center;
   min-height: 50vh;
   border-radius: 20px;
+  padding-bottom: 2rem;
 }
 
 .theme h3 {
@@ -642,7 +675,7 @@ Theme
   grid-auto-rows: minmax(50px, auto);
   width: 100%;
   background-color: ;
-  gap: 1.5rem 0;
+  gap: 2rem 0;
 }
 
 .theme-cell {
@@ -758,6 +791,7 @@ Theme
   --secondary-color: #5d25e0;
   --light-color-500: #dee8ff;
   --light-color-600: #afb1ad;
+  --light-color-700: #9a80d7ff;
   --light-color-700: #6e4dbf;
 }
 .lavender-background {
@@ -964,6 +998,4 @@ Theme
 .natural-sky-container span {
   color: var(--primary-color);
 }
-
-
 
