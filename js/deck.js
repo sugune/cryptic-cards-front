@@ -132,6 +132,9 @@ class UI {
     
     if (editCardNameInput.value !== initialCardname) data.cardname = editCardNameInput.value;
     
+    editCardNameInput.value = '';
+    this.emptyDefinitionsValue(editDefinitionInputBoxes);
+    this.toggleEditCardWindow(); 
     
     const res = await Request.updateReq(`${cardUrl}${cardId}`, data, token);
     
@@ -157,10 +160,6 @@ class UI {
     this.displayTags();
     this.displayEditedCardMastery(newCard)
     
-    editCardNameInput.value = '';
-    this.emptyDefinitionsValue(editDefinitionInputBoxes);
-    
-    this.toggleEditCardWindow();
     
   }
   
@@ -345,10 +344,12 @@ class UI {
     
     confirmationModalFunctionality() {
       yesConfirmation.addEventListener('click', async () => {
-        await this.removeElement(cardId);
         this.toggleConfirmationModal();
         this.toggleOptionsWindow();
-        this.displayTags()
+        this.deleteCardMastery();
+        this.removeElement(cardId);
+        this.displayTags();
+        const res = await Request.deleteReq(`${cardUrl}${deckId},${cardId}`, token);
       });
       
       noConfirmation.addEventListener('click', () => {
@@ -357,10 +358,10 @@ class UI {
     }
     
     async removeElement(cardId) {
-      const res = await Request.deleteReq(`${cardUrl}${deckId},${cardId}`, token);
-      
       const element = document.getElementById(cardId);
+      console.log(element)
       const cardElement = element.parentElement;
+      console.log(cardElement)
       cardsContainer.removeChild(cardElement);
     }
     
@@ -373,6 +374,8 @@ class UI {
         if (e.target.matches('i') || e.target.matches('.card-tag') || e.target.matches('span')) {
           return
         }
+        
+        this.toggleCardDisplay();
         console.log(e.currentTarget);
         const element = e.currentTarget;
         const id = element.id;
@@ -401,7 +404,7 @@ class UI {
         console.log(tagNumber)
         console.log(cardDisplayTag)
         
-        this.toggleCardDisplay();
+        
         
       });
     });
@@ -456,8 +459,8 @@ class UI {
   
   displayEditedCard(cards) {
     cards.forEach(card => {
-      const icon = document.getElementById(cardId);
-      const cardElement = icon.parentNode.parentNode;
+      const element = document.getElementById(cardId);
+      const cardElement = element.parentNode;
       cardElement.innerHTML = `
       <div class="card-content" id="${card._id}">
         <div class="card-tag">
@@ -483,6 +486,11 @@ class UI {
       div2.classList.add('card-mastery-name');
       div2.classList.add(`a${card._id}`);
       div3.classList.add('card-mastery-proficiency');
+      
+      div1.id = `id${card._id}`;
+      div2.id = `id${card._id}`;
+      div3.id = `id${card._id}`;
+      console.log(div1)
       
       div1.textContent = `1`;
       div2.innerHTML = card.cardname;
@@ -514,9 +522,21 @@ class UI {
   }
   
   displayEditedCardMastery(card) {
-    const cardNameMastery = cardMastery.querySelector(`.a${card._id}`);
+    const cardNameMastery = cardMastery.querySelector(`#id${card._id}`);
     
     cardNameMastery.innerHTML = card.cardname;
+  }
+  
+  deleteCardMastery() {
+    const masteryNumber = cardMastery.querySelector(`.card-mastery-number#id${cardId}`);
+    const masteryName = cardMastery.querySelector(`.card-mastery-name#id${cardId}`);
+    const masteryProficiency = cardMastery.querySelector(`.card-mastery-proficiency#id${cardId}`);
+    
+    cardMastery.removeChild(masteryNumber)
+    cardMastery.removeChild(masteryName)
+    cardMastery.removeChild(masteryProficiency)
+    
+    this.displayCardNumber()
   }
   
   displayCardNumber() {

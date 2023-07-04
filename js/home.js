@@ -1,4 +1,4 @@
-import {TokenStorage, Request, deckUrl, Theme} from './utility.js ';
+import {TokenStorage, Request, deckUrl, cardUrl, Theme} from './utility.js ';
 
 const addIcon = document.querySelector('.fa-plus');
 const blackOverlay = document.querySelector('.black-overlay');
@@ -38,6 +38,20 @@ const themeOverlay = document.querySelector('.theme-overlay');
 const themeBtn = document.querySelector('.theme-setting');
 const themeGrid = document.querySelector('.theme-grid');
 
+// play elements
+const playButton = document.querySelector('.deck-section > i');
+const chooseDeckContainer = document.querySelector('.choose-deck-container');
+const chooseDeckOverlay = document.querySelector('.choose-deck-overlay');
+const chooseDeck = document.querySelector('.choose-deck');
+
+const chooseGameMethodOverlay = document.querySelector('.choose-game-method-overlay')
+const chooseGameMethodContainer = document.querySelector('.choose-game-method-container');
+const circleDisplay = document.querySelector('.circle-display');
+const gameMethods = [...document.querySelectorAll('.choose-game-method-container > div')];
+
+const errorMessage = document.querySelector('.error-message-container');
+const errorMessageOverlay = document.querySelector('.error-message-overlay');
+const okBtn = document.querySelector('.ok-button');
 
 //const token = 'b'
 const token = TokenStorage.getToken();
@@ -51,32 +65,7 @@ class UI {
     createFormBtn.addEventListener('click', this.createDeckFormCB);
     editFormBtn.addEventListener('click', this.editDeckFormCB);
     
-    addIcon.addEventListener('click', () => {
-      if (createDeckWindow.matches('.show-deck-window')) {
-        createDeckWindow.classList.remove('show-deck-window'); 
-        addIcon.classList.toggle('animate-icon');
-        blackOverlay.classList.toggle('show-overlay');
-        return
-      }
-      
-      if (profileContainer.matches('.show-profile-container')){
-        this.toggleProfile();
-        return
-      }
-      
-      if (themeContainer.matches('.show-theme-container')) {
-        this.toggleTheme();
-        return
-      }
-      
-      if (editDeckWindow.matches('.show-deck-window')) {
-        editDeckWindow.classList.remove('show-deck-window');
-        addIcon.classList.toggle('animate-icon');
-        blackOverlay.classList.toggle('show-overlay');
-        return
-      }
-      this.toggleCreateDeckWindow();
-    });
+    addIcon.addEventListener('click', this.addIconFunctionality);
     
     
     editOptionBtn.addEventListener('click', () => {
@@ -96,7 +85,12 @@ class UI {
     profileUsername.innerHTML = username;
     
     headerLogo.addEventListener('click', () => {
-      if (!createDeckWindow.matches('.show-deck-window') && !editDeckWindow.matches('.show-deck-window') && !themeContainer.matches('.show-theme-container')) {
+      if (
+        !createDeckWindow.matches('.show-deck-window') && 
+        !editDeckWindow.matches('.show-deck-window') && 
+        !themeContainer.matches('.show-theme-container') &&
+        !playButton.matches('.animate')
+      ) {
         this.toggleProfile()
       }
     });
@@ -112,6 +106,48 @@ class UI {
       this.toggleTheme();
     });
     
+  }
+  
+  addIconFunctionality = () => {
+    if (createDeckWindow.matches('.show-deck-window')) {
+        createDeckWindow.classList.remove('show-deck-window'); 
+        addIcon.classList.toggle('animate-icon');
+        blackOverlay.classList.toggle('show-overlay');
+        return
+      }
+      
+      if (profileContainer.matches('.show-profile-container')){
+        this.toggleProfile();
+        return
+      }
+      
+      if (playButton.matches('.animate')) {
+        this.toggleChooseDeck();
+        if (errorMessage.matches('.show-error-message-container')){
+          this.toggleErrorMessage();
+        }
+        
+        if (chooseGameMethodContainer.matches('.show-choose-game-method-container')) {
+          this.toggleGameMethods();
+          circleDisplay.removeEventListener('click', this.toggleGameMethods); 
+        }
+        
+        return
+      }
+      
+      
+      if (themeContainer.matches('.show-theme-container')) {
+        this.toggleTheme();
+        return
+      }
+      
+      if (editDeckWindow.matches('.show-deck-window')) {
+        editDeckWindow.classList.remove('show-deck-window');
+        addIcon.classList.toggle('animate-icon');
+        blackOverlay.classList.toggle('show-overlay');
+        return
+      }
+      this.toggleCreateDeckWindow(); 
   }
   
   themeFunctionality() {
@@ -206,10 +242,12 @@ class UI {
   
   confirmationModalFunctionality() {
     yesConfirmation.addEventListener('click', async () => {
-      await this.removeElement(deckId);
       this.toggleConfirmationModal();
       this.toggleOptionsWindow();
-      this.displayTags()
+      this.removeElement(deckId);
+      this.displayTags();
+      this.displayDeckChoicesTags();
+      const res = await Request.deleteReq(`${deckUrl}${deckId}`, token);
     });
     
     noConfirmation.addEventListener('click', () => {
@@ -236,6 +274,23 @@ class UI {
     });
   }
   
+  playButtonFunctionality() {
+    playButton.addEventListener('click', () => {
+      addIcon.classList.toggle('animate-icon');
+      playButton.classList.toggle('animate');
+      chooseDeckOverlay.classList.toggle('show-choose-deck-overlay');
+      addIcon.removeEventListener('click', this.addIconFunctionality)
+      
+      setTimeout(() => {
+        chooseDeckContainer.classList.add('animate-choose-deck-container');
+      }, 500); 
+      
+      setTimeout(() => {
+        addIcon.addEventListener('click', this.addIconFunctionality)
+      }, 1000)
+    });
+  }
+  
   async populateEditWindow() {
     const res = await Request.getReq(`${deckUrl}${deckId}`, token);
     const deck = res.data.deck;
@@ -246,11 +301,13 @@ class UI {
   }
   
    async removeElement(id) {
-    const res = await Request.deleteReq(`${deckUrl}${id}`, token);
-    
     const element = document.getElementById(id);
+    
+    const chooseDeckElement = chooseDeck.querySelector(`#id_${id}`)
     const deckElement = element.parentElement.parentElement;
-    deckElement.remove()
+    
+    deckElement.remove();
+    chooseDeckElement.remove();
   }
   
   toggleOptionsWindow() {
@@ -261,6 +318,15 @@ class UI {
       optionsContainer.classList.remove('show-options');
       
     });
+  }
+  
+  toggleChooseDeck() {
+    chooseDeckContainer.classList.toggle('animate-choose-deck-container');
+    addIcon.classList.toggle('animate-icon');
+    setTimeout(() => {
+      playButton.classList.toggle('animate')
+      chooseDeckOverlay.classList.toggle('show-choose-deck-overlay');
+    }, 500);
   }
   
   toggleEditDeckWindow() {
@@ -293,6 +359,17 @@ class UI {
     themeOverlay.classList.toggle('show-theme-overlay');
   }
   
+  toggleGameMethods() {
+    chooseGameMethodOverlay.classList.toggle('show-choose-game-method-overlay');
+    chooseGameMethodContainer.classList.toggle('show-choose-game-method-container');
+    circleDisplay.classList.toggle('show-circle-display') 
+  }
+  
+  toggleErrorMessage() {
+    errorMessage.classList.toggle('show-error-message-container');
+    errorMessageOverlay.classList.toggle('show-error-message-overlay');
+  }
+  
   createDeckFormCB = async (e) => {
     e.preventDefault();
     
@@ -300,6 +377,9 @@ class UI {
       deckname: createDeckNameInput.value,
       description: createDescriptionInput.value
     }
+    createDeckNameInput.value = '';
+    createDescriptionInput.value = '';
+    this.toggleCreateDeckWindow()
     
     const res = await Request.postReq(deckUrl, data, token);
     const newDeck = res.data;
@@ -320,11 +400,9 @@ class UI {
       return
     }
     
-    this.toggleCreateDeckWindow()
     this.displayDeck([newDeck])
-    this.displayTags();
-    createDeckNameInput.value = '';
-    createDescriptionInput.value = '';
+    this.displayDeckChoices([newDeck]);
+    
     
   }
   
@@ -336,6 +414,9 @@ class UI {
     }
     
     if (editDeckNameInput.value !== initialDeckname) data.deckname = editDeckNameInput.value;
+    editDeckNameInput.value = '';
+    editDescriptionInput.value = '';
+    this.toggleEditDeckWindow();
     
     const res = await Request.updateReq(`${deckUrl}${deckId}`, data, token);
     console.log(res)
@@ -357,22 +438,26 @@ class UI {
     }
     const newDeck = res.data.deck;
     
-    this.toggleEditDeckWindow();
     this.editDeck(newDeck);
+    this.editDeckChoice(newDeck);
     this.displayTags();
-    editDeckNameInput.value = '';
-    editDescriptionInput.value = '';
     
   }
   
-  displayDeck(decks) {
-    decks.forEach(deck => {
+  async displayDeck(decks) {
+    console.log(decks)
+    const deckLength = [...deckSectionContainer.querySelectorAll('.deck')].length;
+    
+    let tagNumber = deckLength + 1;
+    for (const deck of decks) {
+      const res = await Request.getAllReq(cardUrl, token, deck._id);
+      const cards = res.data.cards.length
       const div = document.createElement('div');
       div.classList.add('deck');
       div.innerHTML = `
         <div class="deck-title">
           <div class="deck-tag">
-            <span>1</span>
+            <span>${tagNumber}</span>
           </div>
           <h2>${deck.deckname}</h2>
           <p>${deck.description}</p>
@@ -380,38 +465,94 @@ class UI {
         </div>
         <div id="${deck._id}" class="deck-items">
             <p>items</p>
-          <span>26</span>
+          <span>${cards}</span>
         </div>
       
       `;
+      
       const deckOption = div.querySelector('.fa-ellipsis-vertical');
       const deckItemNavigator = div.querySelector('.deck-items');
+      
       this.deckCardsNavigation(deckItemNavigator);
-      this.deckOptionsFunctionality(deckOption)
+      this.deckOptionsFunctionality(deckOption);
+      
       deckSectionContainer.appendChild(div);
+      
+      tagNumber++;
+    };
+  }
+  
+  gameMethodsFunctionality() {
+    okBtn.addEventListener('click', () => {
+      this.toggleErrorMessage();
     });
+    
+    gameMethods.forEach(method => {
+      method.addEventListener('click', (e) => {
+        
+        const id = localStorage.getItem('chosenDeckId');
+        
+        if (id === 'invalid') {
+          this.toggleErrorMessage();
+          return
+        }
+        
+        
+        if (e.currentTarget.matches('.slide-option')) {
+          window.location.href = './slide.html'
+        }
+        if (e.currentTarget.matches('.select-option')) {
+          window.location.href = './select.html'
+        }
+        if (e.currentTarget.matches('.writing-option')) {
+          window.location.href = './writing.html'
+        }
+        if (e.currentTarget.matches('.mix-option')) {
+          window.location.href = './mix.html'
+        }
+        
+      });
+    });
+  }
+  
+  gameMethodsToggleFunctionality = async (e) => {
+    
+    const id = e.currentTarget.id.split('_')[1];
+    
+    
+    this.toggleGameMethods();
+    
+    circleDisplay.addEventListener('click', this.toggleGameMethods);
+    circleDisplay.addEventListener('click', () => {
+      if (!chooseGameMethodContainer.matches('.show-choose-game-method-container')) {
+      circleDisplay.removeEventListener('click', this.toggleGameMethods);
+      }
+    });
+    
+    const res = await Request.getAllReq(cardUrl, token, id);
+    const cardLength = res.data.cards.length;
+    
+    if (cardLength < 5) {
+      localStorage.setItem('chosenDeckId', 'invalid');
+    } else {
+      localStorage.setItem('chosenDeckId', id);
+    }
+    console.log(res)
+    
+      
   }
   
   editDeck(deck) {
     const optionIcon  = document.getElementById(deckId);
-    const element = optionIcon.parentElement.parentElement;
+    const element = optionIcon.parentElement;
     element.innerHTML = `
-        <div class="deck-title">
           <div class="deck-tag">
             <span>1</span>
           </div>
           <h2>${deck.deckname}</h2>
           <p>${deck.description}</p>
-          <i class="fa-solid fa-ellipsis-vertical" id="${deck._id}"></i>
-        </div>
-          <div id="${deck._id}" class="deck-items">
-            <p>items</p>
-          <span>26</span>
-        </div>
-      `;
+          <i class="fa-solid fa-ellipsis-vertical" id="${deck._id}"></i>`;
     const deckOption = element.querySelector('.fa-ellipsis-vertical');
-    const deckItemNavigator = element.querySelector('.deck-items');
-    this.deckCardsNavigation(deckItemNavigator);
     this.deckOptionsFunctionality(deckOption);
   }
   
@@ -424,6 +565,53 @@ class UI {
       tagNumber++;
     });
     
+  }
+  
+  displayDeckChoicesTags() {
+    const decks = [...chooseDeck.querySelectorAll('.choose-deck-single')];
+    let tagNumber = 1;
+    decks.forEach(deck => {
+      const tag = deck.querySelector('.choose-deck-tag span');
+      tag.innerHTML = tagNumber;
+      tagNumber++;
+    });
+    
+  }
+  
+  displayDeckChoices(decks) {
+    decks.forEach(deck => {
+      const div = document.createElement('div');
+      div.classList.add('choose-deck-single');
+      div.id = `id_${deck._id}`;
+      div.innerHTML = `
+      <div class="choose-deck-title">
+        <div class="choose-deck-tag">
+          <span>1</span>
+        </div>
+        <h2>${deck.deckname}</h2>
+      </div>
+      `
+      div.addEventListener('click', this.gameMethodsToggleFunctionality);
+      chooseDeck.appendChild(div);
+      
+    });
+    
+    this.displayDeckChoicesTags();
+  }
+  
+  editDeckChoice(deck) {
+    const element = chooseDeck.querySelector(`#id_${deckId}`);
+    console.log(element)
+    element.innerHTML = `
+      <div class="choose-deck-title">
+        <div class="choose-deck-tag">
+          <span>1</span>
+        </div>
+        <h2>${deck.deckname}</h2>
+      </div>
+      `
+      
+    this.displayDeckChoicesTags()
   }
   
   displayError(message, element) {
@@ -488,6 +676,12 @@ class UI {
   
 }
 
+window.addEventListener('pageshow', (e) => {
+  if (e.persisted) {
+    location.reload();
+  }
+})
+
 window.addEventListener('DOMContentLoaded', async () => {
   const res = await Request.getAllReq(deckUrl, token);
   const currentDecks = res.data.deck;
@@ -497,10 +691,13 @@ window.addEventListener('DOMContentLoaded', async () => {
   const ui = new UI;
   ui.setTheme(themeProperties)
   ui.displayDeck(currentDecks);
-  ui.displayTags();
+  ui.playButtonFunctionality();
   ui.deckFunctionality();
+  ui.displayDeckChoices(currentDecks);
   ui.confirmationModalFunctionality();
   ui.profileFunctionality();
   ui.themeFunctionality();
+  ui.gameMethodsFunctionality();
   
 });
+

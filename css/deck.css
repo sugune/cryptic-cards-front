@@ -425,7 +425,7 @@ Options
   align-items: center;
   background-color: ;
   transition: all 300ms ease;
-  transform: scale(0);
+  transform: scaleX(0);
 }
 
 .options {
@@ -441,7 +441,7 @@ Options
 }
 
 .show-options {
-  transform: scale(1);
+  transform: scaleX(1);
 }
 
 .options .fa-xmark {
@@ -491,7 +491,7 @@ Options
   left: 0;
   background-color: var(--light-color-700);
   z-index: -1;
-  transition: all 100ms ease-in;
+  transition: all 300ms ease;
   transform: scaleX(0);
   opacity: 0;
 }
@@ -541,7 +541,7 @@ confirmation modal
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0);
+  transform: translate(-50%, -50%) scaleX(0);
   background-color: var(--background-color-300-0);
   color: var(--light-color-500);
   z-index: 10000;
@@ -553,11 +553,11 @@ confirmation modal
   align-items: center;
   gap: 0;
   flex-direction: column;
-  transition: all 300ms ease-in;
+  transition: all 300ms ease;
 }
 
 .show-confirmation-modal {
-  transform: translate(-50%, -50%) scale(1);
+  transform: translate(-50%, -50%) scaleX(1);
 }
 
 .confirmation-modal p {

@@ -265,6 +265,10 @@ class UI {
 
 
 window.addEventListener('DOMContentLoaded', () => {
+  localStorage.removeItem('deckId')
+  localStorage.removeItem('username')
+  localStorage.removeItem('token')
+  
   if(!Theme.getTheme()) Theme.setTheme();
   const themeProperties = Theme.getTheme();
   

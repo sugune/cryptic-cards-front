@@ -1,0 +1,53 @@
+
+/*
+header
+*/
+
+.slide-header {
+  position: relative;
+  height: 6rem;
+  width: 100%;
+  background-color: var(--background-color-400);
+  background-image: linear-gradient(to top, var(--background-color-500) 0%, var(--background-color-400) 60%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slide-header-container {
+  position: relative;
+  width: 85%;
+  height: 100%;
+  max-width: var(--max-width);
+  display: flex;
+  justify-content: space-between;
+}
+
+.slide-header-image img {
+  width: 60px;
+}
+
+.slide-header-image {
+  position: relative;
+  background-color: ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-x-btn i {
+  font-size: 1.4rem;
+  transition: var(--transition);
+  transition: all 500ms ease-in;
+  transform: rotate(45deg);
+  color: var(--secondary-color);
+}
+
+.slide-x-btn {
+  background-color: ;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
