@@ -2,12 +2,19 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+
     <title>slide</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://kit.fontawesome.com/60018bc0e9.js" crossorigin="anonymous"></script>
+    <link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="../css/global.css"/>
     <link rel="stylesheet" href="../css/slide.css"/>
   </head>
@@ -15,13 +22,109 @@
       <header class="slide-header">
         <div class="slide-header-container">
           <div class="slide-header-image">
-            <img src="../assets/logos/teal-and-turquoise-small.png" alt="logo"/>
+            <img src="../assets/logos/" alt="logo"/>
           </div>
           <div class="slide-x-btn">
             <i class="fa-solid fa-plus"></i>
           </div>
         </div>
       </header>
+      
+      <main class="main-section">
+        <div class="scrollbar-container">
+          <div class="swiper-scrollbar"></div>
+        </div>
+        <div class="slider-section">
+          <div class="slider-card-container swiper mySwiper">
+            <div class="slider-card-wrapper swiper-wrapper">
+              
+<!--               <div class="slider-card swiper-slide">
+  <div class="update-card-container">
+    <div class="correct">
+      <h4>
+        correct
+      </h4>
+      <div>6</div>
+    </div>
+    <div class="incorrect">
+      <h4>
+        incorrect
+      </h4>
+      <div>26</div>
+    </div>
+    
+    <button class="update-mastery-btn">
+      Update Mastery
+    </button>
+  </div>
+  
+</div> -->
+              
+              
+              
+<!--             <div class="slider-card swiper-slide">
+
+<i class="fa-solid fa-circle-check"></i>
+<i class="fa-solid fa-circle-xmark"></i>
+
+  <div class="slider-cardname">
+    <div class="cardname">
+      6 most cutest girls in every possible universe
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Maiores recusandae, neque porro laudantium tempore ipsam distinctio atque magnam ducimus maxime.
+      <i class="fa-solid fa-chevron-up"></i>
+      <i class="fa-solid fa-chevron-down"></i>
+    </div>
+    <h4>Answer:</h4>
+  </div>
+  <div class="slider-definition">
+    <ul class="list-definition">
+      <i class="fa-solid fa-chevron-up"></i>
+      <i class="fa-solid fa-chevron-down"></i>
+      <li class="item-definition">Sumireko</li>
+      <li class="item-definition">Sumireko</li>
+      <li class="item-definition">Sumireko</li>
+      <li class="item-definition">Sumireko</li>
+      <li class="item-definition">Sumireko</li>
+      <li class="item-definition">Sumireko</li>
+      <li class="item-definition">Nemi</li>
+      <li class="item-definition">Gura</li>
+      <li class="item-definition">Sora</li>
+      <li class="item-definition">Suon</li>
+      <li class="item-definition">Kinna</li>
+      <li class="item-definition">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro ab aliquam possimus temporibus cum tenetur unde provident esse fugiat alias.</li>
+    </ul>
+  </div>
+</div>
+-->
+            
+            
+          </div>
+
+          <div class="swiper-pagination"></div>
+        </div>
+        </div> 
+        
+        <div class="navigation-section">
+          
+          <div class="navigation-container">
+            <div class="swiper-prev">
+              <i class="fa-solid fa-caret-left"></i>
+            </div>
+            <div class="swiper-next">
+              <i class="fa-solid fa-caret-right"></i>
+            </div>
+           
+          </div>
+          
+          <div class="judgment-container">
+            <i class="fa-solid fa-circle-xmark"></i>
+            <i class="fa-solid fa-circle-check"></i>
+          </div>
+          
+          
+        </div>
+        
+      </main>
       
       <script type="module" charset="utf-8" src="../js/slide.js"></script>
   </body>

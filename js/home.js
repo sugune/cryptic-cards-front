@@ -678,6 +678,7 @@ class UI {
 
 window.addEventListener('pageshow', (e) => {
   if (e.persisted) {
+    localStorage.removeItem('deckId');
     location.reload();
   }
 })
