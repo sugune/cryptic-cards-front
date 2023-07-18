@@ -6,6 +6,9 @@ const sliderCardContainer = document.querySelector('.slider-card-wrapper');
 const correctJudge = document.querySelector('.fa-circle-check');
 const incorrectJudge = document.querySelector('.fa-circle-xmark');
 
+const loadingSpinner = document.querySelector('.loading-spinner-container');
+const exitBtn = document.querySelector('.slide-x-btn')
+
 
 const token = TokenStorage.getToken();
 const deckId = localStorage.getItem('chosenDeckId');
@@ -22,7 +25,9 @@ class UI {
       this.shuffleCards,
       this.createCards,
       this.createUpdateMasteryCard,
-      this.appendCards
+      this.appendCards,
+      this.updateJudgmentToDB,
+      this.exitBtnFunctionality
       )(cardsData);
     
     
@@ -99,13 +104,13 @@ class UI {
         <h4>
           correct
         </h4>
-        <div>6</div>
+        <div>0</div>
       </div>
       <div class="incorrect">
         <h4>
           incorrect
         </h4>
-        <div>26</div>
+        <div>0</div>
       </div>
       
       <button class="update-mastery-btn">
@@ -122,6 +127,13 @@ class UI {
     return arg => {
       return fns.reduce((composed, f) => f(composed), arg);
     }
+  }
+  
+  exitBtnFunctionality() {
+    exitBtn.addEventListener('click', () => {
+      localStorage.removeItem('chosenDeckId');
+      window.location.href = './home.html';
+    });
   }
   
   swiperNextFunctionality = () => {
@@ -188,6 +200,25 @@ class UI {
     correctStorage.textContent = judgment.correct
     incorrectStorage.textContent = judgment.incorrect
     console.log(judgment)
+  }
+  
+  updateJudgmentToDB() {
+    const updateBtn = document.querySelector('.update-mastery-btn');
+    
+    updateBtn.addEventListener('click', async () => {
+      if (Object.keys(judgmentStorage).length === 0) return
+      
+      loadingSpinner.classList.add('show-loading-spinner');
+      for (const [id, judgment] of Object.entries(judgmentStorage)) {
+        const data = {
+          $inc: {mastery: judgment ? 1 : -1},
+          deck: deckId
+        }
+        const res = await Request.updateReq(`${cardUrl}${id}`, data, token);
+      }
+      loadingSpinner.classList.remove('show-loading-spinner');
+      location.reload();
+    });
   }
   
   correctJudgment(activeIndex) {

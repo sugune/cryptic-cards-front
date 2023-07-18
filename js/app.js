@@ -258,10 +258,13 @@ class UI {
 }
 
 
-
-
-
-
+window.addEventListener('pageshow', (e) => {
+  if (e.persisted) {
+    localStorage.removeItem('username');
+    localStorage.removeItem('token');
+    location.reload();
+  }
+})
 
 
 window.addEventListener('DOMContentLoaded', () => {

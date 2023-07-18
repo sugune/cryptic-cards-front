@@ -91,6 +91,8 @@ class UI {
       deck: deckId
     }
     console.log(data)
+    
+    this.emptyDefinitionsValue(createDefinitionInputBoxes);
     const res = await Request.postReq(cardUrl, data, token);
     
     // handling the errors
@@ -110,12 +112,12 @@ class UI {
     }
     const newCard = res.data.card;
     
+    createCardNameInput.value = '';
     this.displayCard([newCard]);
     this.displayTags();
     this.displayCardMastery([newCard]);
     this.displayCardNumber();
-    createCardNameInput.value = '';
-    this.emptyDefinitionsValue(createDefinitionInputBoxes);
+    
     
   }
   
@@ -132,7 +134,6 @@ class UI {
     
     if (editCardNameInput.value !== initialCardname) data.cardname = editCardNameInput.value;
     
-    editCardNameInput.value = '';
     this.emptyDefinitionsValue(editDefinitionInputBoxes);
     this.toggleEditCardWindow(); 
     
@@ -156,6 +157,7 @@ class UI {
     }
     const newCard = res.data.card;
     
+    editCardNameInput.value = ''; 
     this.displayEditedCard([newCard]);
     this.displayTags();
     this.displayEditedCardMastery(newCard)
