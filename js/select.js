@@ -1,6 +1,8 @@
 import {TokenStorage, Request, deckUrl, Theme, cardUrl} from './utility.js ';
 
 const selectCardContainer = document.querySelector('.select-wrapper');
+const loadingSpinner = document.querySelector('.loading-spinner-container');
+const exitBtn = document.querySelector('.select-x-btn');
 
 const token = TokenStorage.getToken();
 const deckId = localStorage.getItem('chosenDeckId');
@@ -16,9 +18,11 @@ class UI {
       this.gatherDefinitions,
       this.createCardElements,
       this.createRandomizedChoices,
+      this.createUpdateMasteryCard,
+      this.appendCards,
       this.swiperFunctionality,
       this.createChoicesFunctionality,
-      
+      this.exitBtnFunctionality
       )(currentCards);
   }
   
@@ -33,6 +37,21 @@ class UI {
       [cards[i], cards[j]] = [cards[j], cards[i]];
     }
     return cards;
+  }
+  
+  appendCards(cards) {
+    cards.forEach(card => {
+      selectCardContainer.appendChild(card)
+    }) 
+    
+    return cards
+  }
+  
+  exitBtnFunctionality() {
+    exitBtn.addEventListener('click', () => {
+      localStorage.removeItem('chosenDeckId');
+      window.location.href = './home.html';
+    });
   }
   
   createCardElements(cards) {
@@ -101,10 +120,6 @@ class UI {
       return card;
     });
     
-    cardElements.forEach(card => {
-      selectCardContainer.appendChild(card)
-      console.log(card)
-    })
     return cardElements;
   }
   
@@ -139,17 +154,18 @@ class UI {
     return array;
   }
   
-  createChoicesFunctionality(cards) {
+  createChoicesFunctionality = (cards) => {
     const swiper = cards.pop();
-    
-    const cardElements = cards.map(card => {
+    console.log(cards)
+    cards.forEach(card => {
       let lengthOfCorrectAnswer = card.dataset.lengthOfCorrectAnswer;
       const id = card.id.split('_')[1];
       let answer = [];
       
-      const listDedinitionsContainer = card.querySelector('.select-list-definition');
+      const listDefinitionsContainer = card.querySelector('.select-list-definition');
+      if (!listDefinitionsContainer) return card
       
-      listDedinitionsContainer.addEventListener('click', (e) => {
+      listDefinitionsContainer.addEventListener('click', (e) => {
         if (e.target.matches('.single-definition') && lengthOfCorrectAnswer > 0) {
           
           if(e.target.dataset.identity === 'correct') {
@@ -184,21 +200,106 @@ class UI {
             // adding tap-to slide next
             const slideNext = () => {
               swiper.slideNext()
+              if (this.isLastCard(swiper)) {
+                this.updateResult();
+                // add an update functionality
+                this.updateJudgmentToDB();
+              }
             }
+            
             setTimeout(function() {
               mainSection.addEventListener('click', slideNext);
               mainSection.addEventListener('click', () => {
                 mainSection.removeEventListener('click', slideNext);
               })
             }, 1);
-            
           }
-          
         }
       });
-      
     });
+  }
+  
+  createUpdateMasteryCard(cards) {
+    const selectCard = document.createElement('div');
+    selectCard.classList.add('select-card');
+    selectCard.classList.add('swiper-slide');
+    selectCard.classList.add('update-card');
     
+    selectCard.innerHTML = `
+    <div class="update-card-container">
+      <div class="correct">
+        <h4>
+          correct
+        </h4>
+        <div>0</div>
+      </div>
+      <div class="incorrect">
+        <h4>
+          incorrect
+        </h4>
+        <div>0</div>
+      </div>
+      
+      <button class="update-mastery-btn">
+        Update Mastery
+      </button>
+    </div>
+    `;
+    cards.push(selectCard);
+    
+    return cards
+  }
+  
+  isLastCard(swiper) {
+    const totalSlides = swiper.slides.length;
+    const activeIndex = swiper.activeIndex;
+  
+    return activeIndex === totalSlides - 1;
+  }
+  
+  updateResult() {
+    const judgment = Object.values(judgmentStorage).reduce((judgment, value) => {
+      if (!judgment['correct']) {
+        judgment['correct'] = 0;
+      }
+      if (!judgment['incorrect']) {
+        judgment['incorrect'] = 0;
+      }
+     
+      if (value) {
+        judgment['correct'] = 1 + judgment.correct;
+      }
+      if (!value) {
+        judgment['incorrect'] = 1 + judgment.incorrect;
+      }
+      
+      return judgment;
+    }, {}); 
+    
+    
+    const correctStorage = document.querySelector('.select-card .correct div ');
+    const incorrectStorage = document.querySelector('.select-card .incorrect div ');
+    
+    correctStorage.textContent = judgment.correct
+    incorrectStorage.textContent = judgment.incorrect;
+  }
+  
+  updateJudgmentToDB() {
+    const updateBtn = document.querySelector('.update-mastery-btn');
+    
+    updateBtn.addEventListener('click', async () => {
+      if (Object.keys(judgmentStorage).length === 0) return
+      loadingSpinner.classList.add('show-loading-spinner');
+      for (const [id, judgment] of Object.entries(judgmentStorage)) {
+        const data = {
+          $inc: {mastery: judgment ? 1 : -1},
+          deck: deckId
+        }
+        const res = await Request.updateReq(`${cardUrl}${id}`, data, token);
+      }
+      loadingSpinner.classList.remove('show-loading-spinner');
+      location.reload();
+    });
   }
     
   setTheme(themeProperties) {

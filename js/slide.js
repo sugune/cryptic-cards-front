@@ -7,7 +7,7 @@ const correctJudge = document.querySelector('.fa-circle-check');
 const incorrectJudge = document.querySelector('.fa-circle-xmark');
 
 const loadingSpinner = document.querySelector('.loading-spinner-container');
-const exitBtn = document.querySelector('.slide-x-btn')
+const exitBtn = document.querySelector('.slide-x-btn');
 
 
 const token = TokenStorage.getToken();
@@ -15,7 +15,7 @@ const deckId = localStorage.getItem('chosenDeckId');
 let caretCounter = 0;
 let prevCorrectJudgmentFunction;
 let prevIncorrectJudgmentFunction;
-let judgmentStorage = {}
+let judgmentStorage = {};
 
 class UI {
   
