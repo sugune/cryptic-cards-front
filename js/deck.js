@@ -504,23 +504,6 @@ class UI {
       
       
     });
-    
-    // const mcnumber = cardMastery.querySelector('.card-mastery-number');
-    // const mcnames = [...cardMastery.querySelectorAll('.card-mastery-name')];
-    // const mcm = cardMastery.querySelector('.card-mastery-proficiency');
-    
-    // const mcnumberWidth = window.getComputedStyle(mcnumber).getPropertyValue('width')
-    // const mcmWidth = window.getComputedStyle(mcm).getPropertyValue('width')
-    
-    // const cardMasteryWidth = window.getComputedStyle(cardMastery).getPropertyValue('width');
-    // console.log(cardMasteryWidth)
-    // console.log(mcnumberWidth)
-    // console.log(mcmWidth)
-    
-    // mcnames.forEach(mcname => {
-    //   mcname.style.width = `calc(${cardMasteryWidth} - ${mcmWidth} - ${mcnumberWidth} - 2rem - 3px)`;
-    // })
-    
   }
   
   displayEditedCardMastery(card) {
@@ -557,7 +540,12 @@ class UI {
     deckHeaderName.textContent = deckInfo.deckname;
   }
   
-  
+  setMainHeight() {
+    const headerHeight = document.querySelector('.deck-header').offsetHeight;
+    const windowHeight = window.innerHeight;
+    const mainHeight = windowHeight - headerHeight;
+    document.querySelector('body').style.setProperty('--main-height', `${mainHeight}px`)
+  }
   
   setTheme(themeProperties) {
     const root = document.documentElement;
@@ -610,6 +598,14 @@ class UI {
 }
 
 
+window.addEventListener('load', () => {
+  const ui = new UI;
+  ui.setMainHeight();
+});
+window.addEventListener('resize', () => {
+  const ui = new UI;
+  ui.setMainHeight();
+}); 
 
 
 window.addEventListener('DOMContentLoaded', async () => {

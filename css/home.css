@@ -1,4 +1,14 @@
 
+body {
+  --main-height: 100px;
+  position: relative;
+  background-color: ;
+} 
+
+::-webkit-scrollbar {
+  width: 0; /* Set the width of the scrollbar */
+}
+
 .home-header {
   position: relative;
   height: 6rem;
@@ -60,7 +70,7 @@ Create create-deck Window
 .black-overlay {
   position: absolute;
   top: 100%;
-  height: calc(100vh - 6rem);
+  height: var(--main-height);
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.7);
   display: none;
@@ -148,13 +158,11 @@ Create create-deck Window
 main deck section
 */
 
-body {
-  position: relative;
-}
 
 .deck-section {
+  
   position: relative;
-  height: calc(100vh - 6rem);
+  height: var(--main-height);
   width: 100%;
   position: absolute;
   left: 50%;
@@ -162,7 +170,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: ;
+  /* background-color: lightblue; */
   overflow: hidden;
 }
 
@@ -188,7 +196,7 @@ body {
   gap: 1rem 3rem;
   overflow: scroll;
   justify-items: center;
-  min-height: calc(100vh - 15rem);
+  /* min-height: calc(100vh - 15rem); */
   padding-bottom: 5rem;
 }
 
@@ -348,6 +356,81 @@ body {
   font-weight: 500;
   text-align: center;
   min-width: 20%;
+}
+
+
+/*
+cardname and description modal
+*/
+
+.modal-overlay {
+  position: absolute;
+  top: 0;
+  height: calc(var(--main-height) + 6rem);
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 526;
+  display: none;
+}
+
+.show-modal-overlay {
+  display: block;
+}
+
+.cardname-modal,
+.description-modal {
+  z-index: 527;
+  position: absolute;
+  left: 50%;
+  top: 40vh;
+  transform: translate(-50%, -50%) scaleX(0);
+  width: 280px;
+  height: 150px;
+  background-color: var(--background-color-300-0);
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  transition: all 300ms ease;
+}
+
+.show-cardname-modal {
+  transform: translate(-50%, -50%) scaleX(1);
+}
+.show-description-modal {
+  transform: translate(-50%, -50%) scaleX(1);
+}
+
+.cardname-modal h2 {
+  color: var(--secondary-color);
+  font-family: tsuki;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  width: 90%;
+  margin: 0;
+  padding-bottom: 1rem;
+  margin-top: 1.7rem;
+  overflow: scroll;
+  word-break: break-all;
+}
+
+.description-modal p {
+  margin: 0;
+  margin-top: 1.7rem;
+  padding-bottom: 1rem;
+  width: 90%;
+  overflow: scroll;
+  word-break: break-all;
+  color: var(--light-color-700);
+  font-size: 1rem;
+}
+
+.cardname-modal i,
+.description-modal i {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.8rem;
+  font-size: 1.3rem;
+  color: var(--primary-color);
 }
 
 
@@ -557,7 +640,7 @@ img.slide-header-logo {
   position: absolute;
   top: 100%;
   width: 100%;
-  height: calc(100vh - 6rem);
+  height: var(--main-height);
   z-index: 1000;
   display: none;
 }
@@ -570,7 +653,7 @@ img.slide-header-logo {
   position: absolute;
   top: 100%;
   width: 100%;
-  height: calc(100vh - 6rem);
+  height: var(--main-height);
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -637,7 +720,7 @@ Theme
   position: absolute;
   top: 100%;
   width: 100%;
-  height: calc(100vh - 6rem);
+  height: var(--main-height);
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 10000;
   display: none;
@@ -1042,7 +1125,7 @@ choose deck
   position: absolute;
   top: 0; 
   width: 100vw;
-  height: calc(100vh - 6rem);
+  height: var(--main-height);
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 500;
   display: none;

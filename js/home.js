@@ -53,6 +53,15 @@ const errorMessage = document.querySelector('.error-message-container');
 const errorMessageOverlay = document.querySelector('.error-message-overlay');
 const okBtn = document.querySelector('.ok-button');
 
+// modal elements
+const cardnameModal = document.querySelector('.cardname-modal');
+const cardnameModalH2 = document.querySelector('.cardname-modal h2');
+const descriptionModal = document.querySelector('.description-modal');
+const descriptionModalP = document.querySelector('.description-modal p');
+const modalOverlay = document.querySelector('.modal-overlay');
+const cardnameModalXBtn = document.querySelector('.cardname-modal i');
+const descriptionModalXBtn = document.querySelector('.description-modal i');
+
 //const token = 'b'
 const token = TokenStorage.getToken();
 let deckId = '';
@@ -75,6 +84,15 @@ class UI {
     
     deleteOptionBtn.addEventListener('click', () => {
       this.toggleConfirmationModal()
+    });
+    
+    cardnameModalXBtn.addEventListener('click', () => {
+      cardnameModal.classList.remove('show-cardname-modal');
+      modalOverlay.classList.remove('show-modal-overlay');
+    });
+    descriptionModalXBtn.addEventListener('click', () => {
+      descriptionModal.classList.remove('show-description-modal');
+      modalOverlay.classList.remove('show-modal-overlay');
     });
     
   }
@@ -310,6 +328,30 @@ class UI {
     chooseDeckElement.remove();
   }
   
+  modalFunctionality(deckCardname, deckDescription) {
+      deckCardname.addEventListener('click', (e) => {
+        const content = e.target.textContent;
+  
+        cardnameModalH2.innerHTML = content;
+        modalOverlay.classList.add('show-modal-overlay');
+        cardnameModal.classList.add('show-cardname-modal');
+        
+      });
+      
+      
+      
+      deckDescription.addEventListener('click', (e) => {
+        const content = e.target.textContent;
+        
+        descriptionModalP.innerHTML = content;
+        descriptionModal.classList.add('show-description-modal');
+        modalOverlay.classList.add('show-modal-overlay');
+        
+      });
+      
+      
+  }
+  
   toggleOptionsWindow() {
     fixedBlackOverlay.classList.toggle('show-fixed-black-overlay');
     optionsContainer.classList.toggle('show-options');
@@ -470,11 +512,14 @@ class UI {
       
       `;
       
+      const deckCardname = div.querySelector('.deck-title h2');
+      const deckDescription = div.querySelector('.deck-title p');
       const deckOption = div.querySelector('.fa-ellipsis-vertical');
       const deckItemNavigator = div.querySelector('.deck-items');
       
       this.deckCardsNavigation(deckItemNavigator);
       this.deckOptionsFunctionality(deckOption);
+      this.modalFunctionality(deckCardname, deckDescription);
       
       deckSectionContainer.appendChild(div);
       
@@ -553,6 +598,10 @@ class UI {
           <p>${deck.description}</p>
           <i class="fa-solid fa-ellipsis-vertical" id="${deck._id}"></i>`;
     const deckOption = element.querySelector('.fa-ellipsis-vertical');
+    const deckCardname = element.querySelector('.deck-title h2');
+    const deckDescription = element.querySelector('.deck-title p');
+    this.modalFunctionality(deckCardname, deckDescription);
+    
     this.deckOptionsFunctionality(deckOption);
   }
   
@@ -644,6 +693,13 @@ class UI {
     return themeProperties;
   }
   
+  setMainHeight() {
+    const headerHeight = document.querySelector('.home-header').offsetHeight;
+    const windowHeight = window.innerHeight;
+    const mainHeight = windowHeight - headerHeight;
+    document.querySelector('body').style.setProperty('--main-height', `${mainHeight}px`)
+  }
+  
   setTheme(themeProperties) {
     const root = document.documentElement;
     const headerLogo = document.querySelector('.home-header-image img');
@@ -682,7 +738,15 @@ window.addEventListener('pageshow', (e) => {
     localStorage.removeItem('chosenDeckId');
     location.reload();
   }
-})
+});
+window.addEventListener('load', () => {
+  const ui = new UI;
+  ui.setMainHeight();
+});
+window.addEventListener('resize', () => {
+  const ui = new UI;
+  ui.setMainHeight();
+}); 
 
 window.addEventListener('DOMContentLoaded', async () => {
   const res = await Request.getAllReq(deckUrl, token);
@@ -702,4 +766,5 @@ window.addEventListener('DOMContentLoaded', async () => {
   ui.gameMethodsFunctionality();
   
 });
+
 

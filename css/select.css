@@ -1,4 +1,8 @@
 
+::-webkit-scrollbar {
+  width: 0; /* Set the width of the scrollbar */
+}
+
 /*
 header
 */
@@ -56,9 +60,11 @@ header
 */
 
 .main-section {
+  --main-height: ;
+  
   position: relative;
   width: 100%;
-  height: calc(100vh - 6rem);
+  height: var(--main-height);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -148,9 +154,6 @@ header
   -ms-overflow-style: none;
 }
 
-::-webkit-scrollbar {
-  width: 0; /* Set the width of the scrollbar */
-}
 
 .single-definition {
   transition: all 1ms ease; 

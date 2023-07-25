@@ -1,4 +1,8 @@
 
+::-webkit-scrollbar {
+  width: 0; /* Set the width of the scrollbar */
+}
+
 /*
 header
 */
@@ -56,9 +60,12 @@ swiper
 */
 
 .main-section {
+  --main-height: 100px;
+  
+  background-color: ;
   position: relative;
   width: 100%;
-  height: calc(100vh - 6rem);
+  height: var(--main-height);
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -69,15 +76,17 @@ swiper
 .slider-section {
   background-color: ;
   width: 100%;
-  height: ;
-  
+  height: 75%;
+  max-height: 30rem;
+  position: relative;
 }
 
 .slider-card-container {
   position: relative;
   margin-top: 1rem;
   width: 16rem;
-  height: 30rem;
+  height: 100%;
+  background-color: ;
 }
 
 .slider-card-wrapper {
@@ -86,8 +95,10 @@ swiper
 
 .slider-card {
   border-radius:20px;
-  width: 17rem;
-  height: 25rem;
+  width: 20rem;
+  height: 90%;
+  max-height: 25rem;
+  /* height: calc(var(--main-height / 1)); */
   background-color: var(--background-color-300-0);
   background-image: linear-gradient(to bottom, var(--background-color-400) 0%, var(--background-color-500) 100%);
   border: 1px solid var(--light-color-700);
@@ -236,13 +247,14 @@ swiper
 }
 
 
+
 /*
 navigation section
 */
 
 
 .navigation-section {
-  height: calc(40vh - 6rem);
+  height: 30%;
   width: 100%;
   background-color: ;
   position: relative;

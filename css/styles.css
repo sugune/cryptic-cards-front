@@ -1,4 +1,11 @@
 
+::-webkit-scrollbar {
+  width: 0; /* Set the width of the scrollbar */
+}
+
+body {
+  --main-height: 100px;
+}
 
 .header {
   position: relative;
@@ -37,7 +44,7 @@
 }
 
 .section {
-  min-height: calc(100vh - 6rem);
+  min-height: var(--main-height);
   width: 100%;
   display: flex;
   justify-content: center;
@@ -108,7 +115,7 @@ Login form
 .black-overlay {
   position: absolute;
   top: 100%;
-  height: calc(100vh - 6rem);
+  height: var(--main-height);
   width: 100vw;
   background-color: rgba(0, 0, 0, 0.5);
   display: none;

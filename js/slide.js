@@ -315,6 +315,14 @@ class UI {
       
     });
   }
+  
+  setMainHeight() {
+    const headerHeight = document.querySelector('.slide-header').offsetHeight;
+    const windowHeight = window.innerHeight;
+    const mainHeight = windowHeight - headerHeight;
+    document.querySelector('.main-section').style.setProperty('--main-height', `${mainHeight}px`);
+    console.log('hello')
+  }
     
   setTheme(themeProperties) {
     const root = document.documentElement;
@@ -335,7 +343,14 @@ class UI {
 }
 
 
-
+window.addEventListener('load', () => {
+  const ui = new UI;
+  ui.setMainHeight();
+});
+window.addEventListener('resize', () => {
+  const ui = new UI;
+  ui.setMainHeight();
+}); 
 
 window.addEventListener('DOMContentLoaded', async () => {
   const res = await Request.getAllReq(cardUrl, token, deckId);
