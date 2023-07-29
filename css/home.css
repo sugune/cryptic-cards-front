@@ -1,9 +1,8 @@
-
 body {
   --main-height: 100px;
   position: relative;
   background-color: ;
-} 
+}
 
 ::-webkit-scrollbar {
   width: 0; /* Set the width of the scrollbar */
@@ -14,7 +13,11 @@ body {
   height: 6rem;
   width: 100%;
   background-color: var(--background-color-400);
-  background-image: linear-gradient(to top, var(--background-color-500) 0%, var(--background-color-400) 60%);
+  background-image: linear-gradient(
+    to top,
+    var(--background-color-500) 0%,
+    var(--background-color-400) 60%
+  );
   display: flex;
   justify-content: center;
   align-items: center;
@@ -61,8 +64,6 @@ body {
   justify-content: center;
 }
 
-
-
 /*
 Create create-deck Window
 */
@@ -86,19 +87,20 @@ Create create-deck Window
   position: absolute;
   top: -1000px;
   opacity: 0;
-  
+
   margin-top: 2rem;
   background-color: var(--background-color-300);
   border-radius: var(--border-radius-500);
-  height: 50vh;
   width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
   transition: all 500ms ease;
+  min-height: 1vh;
 }
 
 .show-deck-window {
+  height: 50vh;
   top: 100%;
   opacity: 1;
 }
@@ -133,7 +135,7 @@ Create create-deck Window
   background-color: transparent;
   border: none;
   outline: none;
-  border-bottom: 2px solid var(--secondary-color); 
+  border-bottom: 2px solid var(--secondary-color);
 }
 
 .deck-window-form .input-box label {
@@ -143,7 +145,7 @@ Create create-deck Window
   top: 50%;
   transform: translateY(-50%);
   transition: var(--transition);
-  color: var(--light-color-600); 
+  color: var(--light-color-600);
 }
 
 .deck-window-form .input-box input:hover ~ label,
@@ -152,15 +154,11 @@ Create create-deck Window
   top: -50%;
 }
 
-
-
 /*
 main deck section
 */
 
-
 .deck-section {
-  
   position: relative;
   height: var(--main-height);
   width: 100%;
@@ -252,14 +250,14 @@ main deck section
   word-break: break-all;
   max-height: 30%;
   color: var(--light-color-700);
-  font-size: .8rem;
+  font-size: 0.8rem;
   background-color: ;
 }
 
 .deck-title i {
   position: absolute;
-  right: .5rem;
-  top: .2rem;
+  right: 0.5rem;
+  top: 0.2rem;
   color: var(--secondary-color);
   background-color: ;
   width: 1.5rem;
@@ -272,7 +270,7 @@ main deck section
 }
 
 .deck-title i::after {
-  content: '';
+  content: "";
   background-color: var(--light-color-700);
   position: absolute;
   width: 100%;
@@ -294,12 +292,12 @@ main deck section
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  z-index : 1;
+  z-index: 1;
   position: relative;
 }
 
 .deck-items::before {
-  content: '';
+  content: "";
   position: absolute;
   width: 100%;
   height: 100%;
@@ -313,8 +311,6 @@ main deck section
   transform: scaleX(1);
 }
 
-
-
 .deck-items p,
 .deck-item span {
   margin: 0;
@@ -323,7 +319,7 @@ main deck section
 .deck-items p {
   border-bottom: 1px solid var(--background-color-400);
   color: var(--background-color-400);
-  font-size: .8rem;
+  font-size: 0.8rem;
 }
 
 .deck-items span {
@@ -341,14 +337,14 @@ main deck section
   top: 0;
   left: 0;
   transform: translate(-50%, -50%) rotate(45deg);
-  box-shadow: 0 0 5px 5px rgba(0, 0, 0, .15);
+  box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.15);
 }
 
 .deck-tag span,
 .choose-deck-tag span {
   margin: 0;
   position: absolute;
-  right: .5rem;
+  right: 0.5rem;
   top: 50%;
   transform: translateY(-50%) rotate(-45deg);
   font-size: 1rem;
@@ -357,7 +353,6 @@ main deck section
   text-align: center;
   min-width: 20%;
 }
-
 
 /*
 cardname and description modal
@@ -433,7 +428,6 @@ cardname and description modal
   color: var(--primary-color);
 }
 
-
 /* 
 Options
 */
@@ -502,11 +496,11 @@ Options
   z-index: 1;
 }
 
-.edit-option::before, 
+.edit-option::before,
 .delete-option::before,
 .confirmation-modal div span:first-child::before,
 .confirmation-modal div span:last-child::before {
-  content: '';
+  content: "";
   border-radius: 10px;
   width: 100%;
   height: 100%;
@@ -523,7 +517,7 @@ Options
 .edit-option:hover::before,
 .delete-option:hover::before,
 .confirmation-modal div span:first-child:hover::before,
-.confirmation-modal div span:last-child:hover::before{
+.confirmation-modal div span:last-child:hover::before {
   transform: scaleX(1);
   opacity: 1;
 }
@@ -607,9 +601,8 @@ Options
   align-items: flex-start;
   flex-grow: 1;
   position: relative;
-  
 }
-  
+
 .confirmation-modal div span:first-child {
   color: var(--primary-color);
   border-right: 1px solid var(--light-color-700);
@@ -617,7 +610,6 @@ Options
 .confirmation-modal div span:last-child {
   color: var(--secondary-color);
 }
-
 
 /*
 Profile
@@ -738,10 +730,14 @@ Theme
   display: flex;
   justify-content: center;
   z-index: 10000;
+  opacity: 0;
+  height: 1px;
 }
 
 .show-theme-container {
   top: 100%;
+  opacity: 1;
+  max-height: auto;
 }
 
 .theme {
@@ -787,7 +783,7 @@ Theme
   align-items: center;
   text-align: center;
   line-height: 1rem;
-  margin-top: .5rem;
+  margin-top: 0.5rem;
   color: var(--primary-color);
 }
 
@@ -805,9 +801,8 @@ Theme
   border-bottom: 1px solid var(--primary-color);
   border-top: 1px solid var(--primary-color);
 }
-  
+
 .theme-cell > div > div {
-  
   width: 50%;
   height: 100%;
   border-radius: 50%;
@@ -823,7 +818,7 @@ Theme
 
 .green-apple-container {
   --background-color-500: #1a1c19;
-  --background-color-400: #222c23; 
+  --background-color-400: #222c23;
   --background-color-300: #424240aa;
   --background-color-300-0: #424240dd;
   --primary-color: #7adb8e;
@@ -850,7 +845,7 @@ Theme
 
 .midnight-dusk-container {
   --background-color-500: #16151d;
-  --background-color-400: #19131d; 
+  --background-color-400: #19131d;
   --background-color-300: #3f3e44aa;
   --background-color-300-0: #3f3e44dd;
   --primary-color: #ef2475;
@@ -877,7 +872,7 @@ Theme
 
 .lavender-container {
   --background-color-500: #111129;
-  --background-color-400: #1d193b; 
+  --background-color-400: #1d193b;
   --background-color-300: #3a3c53aa;
   --background-color-300-0: #3a3c53dd;
   --primary-color: #a177ff;
@@ -905,7 +900,7 @@ Theme
 
 .strawberry-daiquiri-container {
   --background-color-500: #201a1a;
-  --background-color-400: #312727; 
+  --background-color-400: #312727;
   --background-color-300: #484242aa;
   --background-color-300-0: #484242dd;
   --primary-color: #ffb2ba;
@@ -932,7 +927,7 @@ Theme
 
 .tako-container {
   --background-color-500: #21212d;
-  --background-color-400: #272435; 
+  --background-color-400: #272435;
   --background-color-300: #484755aa;
   --background-color-300-0: #484755dd;
   --primary-color: #f3b375;
@@ -959,7 +954,7 @@ Theme
 
 .teal-and-turquoise-container {
   --background-color-500: #202125;
-  --background-color-400: #202529; 
+  --background-color-400: #202529;
   --background-color-300: #47464aaa;
   --background-color-300-0: #47464add;
   --primary-color: #3fe0d0;
@@ -986,7 +981,7 @@ Theme
 
 .tidal-wave-container {
   --background-color-500: #001c3b;
-  --background-color-400: #082b4b; 
+  --background-color-400: #082b4b;
   --background-color-300: #2a4363aa;
   --background-color-300-0: #2a4363dd;
   --primary-color: #5ed4fc;
@@ -1013,7 +1008,7 @@ Theme
 
 .yin-and-yang-container {
   --background-color-500: #1e1e1e;
-  --background-color-400: #313131; 
+  --background-color-400: #313131;
   --background-color-300: #464646aa;
   --background-color-300-0: #464646dd;
   --primary-color: #ffffff;
@@ -1040,7 +1035,7 @@ Theme
 
 .yotsuba-container {
   --background-color-500: #221a19;
-  --background-color-400: #322723; 
+  --background-color-400: #322723;
   --background-color-300: #4a423faa;
   --background-color-300-0: #4a423fdd;
   --primary-color: #ffb49e;
@@ -1067,7 +1062,7 @@ Theme
 
 .natural-sky-container {
   --background-color-500: #1b1b1d;
-  --background-color-400: #262930; 
+  --background-color-400: #262930;
   --background-color-300: #444446aa;
   --background-color-300-0: #444446dd;
   --primary-color: #adc6ff;
@@ -1114,7 +1109,6 @@ play button
   right: 50%;
   transform: translateX(50%);
   background-color: var(--primary-color);
-  
 }
 
 /*
@@ -1123,7 +1117,7 @@ choose deck
 
 .choose-deck-overlay {
   position: absolute;
-  top: 0; 
+  top: 0;
   width: 100vw;
   height: var(--main-height);
   background-color: rgba(0, 0, 0, 0.7);
@@ -1135,7 +1129,6 @@ choose deck
   display: block;
 }
 
-
 .choose-deck-container {
   position: absolute;
   top: 106%;
@@ -1144,10 +1137,13 @@ choose deck
   width: 100vw;
   max-width: 600px;
   border-top: 1rem solid var(--primary-color);
-  background-image: linear-gradient(to top, var(--background-color-400) 0%, var(--background-color-500) 100%);
+  background-image: linear-gradient(
+    to top,
+    var(--background-color-400) 0%,
+    var(--background-color-500) 100%
+  );
   border-radius: 10px;
   transition: all 500ms ease-out;
-  
 }
 
 .choose-deck-inner-container {
@@ -1176,7 +1172,7 @@ choose deck
 }
 
 .circle-display::before {
-  content: '';
+  content: "";
   position: absolute;
   height: 120%;
   width: 120%;
@@ -1224,14 +1220,18 @@ choose deck
   font-size: 1.5rem;
   color: var(--secondary-color);
   color: var(--primary-color);
-  background-image: linear-gradient(to bottom, var(--primary-color) 0%, var(--secondary-color) 100%);
+  background-image: linear-gradient(
+    to bottom,
+    var(--primary-color) 0%,
+    var(--secondary-color) 100%
+  );
   -moz-background-clip: text;
   -webkit-background-clip: text;
   -moz-text-fill-color: transparent;
   -webkit-text-fill-color: transparent;
   margin-left: 6%;
   /* margin-top: .5rem; */
-  padding-top: .5rem;
+  padding-top: 0.5rem;
   margin-bottom: 1rem;
 }
 
@@ -1264,12 +1264,11 @@ game method
   z-index: 601;
   border-radius: 20px;
   transition: all 500ms ease;
-  
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
 }
 
 .show-choose-game-method-container {
@@ -1324,14 +1323,14 @@ error message
   width: 190px;
   height: 150px;
   border-radius: 20px;
-  
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  
+
   z-index: 751;
-  
+
   transition: all 300ms ease;
 }
 
@@ -1345,22 +1344,64 @@ error message
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: .8rem;
+  font-size: 0.8rem;
   text-align: center;
   color: var(--primary-color);
 }
 
-.ok-button {
+.ok-button,
+.ok-btn {
   border-top: 1px solid var(--light-color-700);
   width: 90%;
   text-align: center;
-  padding: .5rem 0;
+  padding: 0.5rem 0;
   color: #449e48;
   font-weight: 600;
   transition: all 300ms ease;
 }
 
-.ok-button:hover {
+.ok-button:hover,
+.ok-btn:hover {
   color: #357a38;
   color: #2e6830;
+}
+
+/*
+unavailable message
+*/
+
+.unavailable-message-container {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%) scaleX(0);
+  background-color: var(--background-color-300-0);
+  width: 80%;
+  height: 60%;
+  border-radius: 20px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 751;
+
+  transition: all 300ms ease;
+}
+
+.show-unavailable-message-container {
+  transform: translate(-50%, -50%) scaleX(1);
+}
+
+.unavailable-message {
+  flex-grow: 1;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  text-align: center;
+  padding-top: 1rem;
+  color: var(--primary-color);
 }

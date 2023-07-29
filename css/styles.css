@@ -165,9 +165,9 @@ Login form
   color: var(--light-color-500);
   width: 90%;
   height: 1.6rem;
-  background-color: transparent;
   border: none;
   outline: none;
+  background-color: transparent;
   border-bottom: 2px solid var(--secondary-color);
 }
 

@@ -3,110 +3,129 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>home</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://kit.fontawesome.com/60018bc0e9.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/global.css"/>
-    <link rel="stylesheet" href="../css/home.css"/>
+    <script
+      src="https://kit.fontawesome.com/60018bc0e9.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/home.css" />
   </head>
   <body>
     <header class="home-header">
       <div class="home-header-container">
         <div class="home-header-image">
-          <img src="./logo-small-.5.png" alt="logo"/>
+          <img src="./logo-small-.5.png" alt="logo" />
         </div>
         <div class="create-deck">
           <i class="fa-solid fa-plus"></i>
         </div>
 
-          <!--   
+        <!--   
          <i class="fa-solid fa-play"></i>
    <i class="fa-regular fa-circle-play"></i>  
    -->
       </div>
-      
+
       <div class="profile-overlay"></div>
       <div class="profile-container">
-        
         <div class="profile">
-          
           <div class="profile-cell profile-logo">
-            <img src="./logo-card-.5.png" alt="logo"/>
+            <img src="./logo-card-.5.png" alt="logo" />
           </div>
-          
+
           <div class="profile-cell profile-username">
             <span>angelika kate</span>
           </div>
-          
+
           <div class="profile-cell theme-setting">
-            <span>
-              Theme
-            </span>
+            <span> Theme </span>
           </div>
-          
+
           <div class="profile-cell table">
-            <span>
-              Documentation
-            </span>
+            <span> Documentation </span>
           </div>
-          
+
           <div class="profile-cell profile-logout">
             <button class="profile-logout-btn">Logout</button>
           </div>
-          
         </div>
       </div>
-      
+
       <div class="black-overlay"></div>
       <div class="deck-window create-deck-window">
         <h2>Create Deck</h2>
         <form action="" class="deck-window-form">
           <div class="input-box">
-            <input class="deck-name-input create-deck-name-input" type="text" id="deck-name" required>
+            <input
+              class="deck-name-input create-deck-name-input"
+              type="text"
+              id="deck-name"
+              required
+            />
             <label for="deck-name">Deck Name</label>
             <div class="">error</div>
           </div>
           <div class="input-box">
-            <input class="deck-description-input create-description-input" type="text" id="deck-description" required>
-            <label for="deck-description">Description  (--optional)</label>
+            <input
+              class="deck-description-input create-description-input"
+              type="text"
+              id="deck-description"
+              required
+            />
+            <label for="deck-description">Description (--optional)</label>
             <div class="">error</div>
           </div>
           <button class="create-form-btn" type="submit">Create</button>
         </form>
       </div>
-      
+
       <div class="deck-window edit-deck-window">
         <h2>Edit Deck</h2>
         <form action="" class="deck-window-form">
           <div class="input-box">
-            <input class="deck-name-input edit-deck-name-input" type="text" id="deck-name" required>
+            <input
+              class="deck-name-input edit-deck-name-input"
+              type="text"
+              id="deck-name"
+              required
+            />
             <label for="deck-name">Edit Deck Name</label>
             <div class="">error</div>
           </div>
           <div class="input-box">
-            <input class="deck-description-input edit-description-input" type="text" id="deck-description" required>
-            <label for="deck-description">Edit Description  (--optional)</label>
+            <input
+              class="deck-description-input edit-description-input"
+              type="text"
+              id="deck-description"
+              required
+            />
+            <label for="deck-description">Edit Description (--optional)</label>
             <div class="">error</div>
           </div>
           <button class="edit-form-btn" type="submit">Edit</button>
         </form>
       </div>
-      
+
       <div class="fixed-black-overlay"></div>
       <div class="options-container">
         <div class="options">
           <i class="fa-solid fa-xmark options-x-btn"></i>
           <div class="edit-option">
-            Edit <i class="fa-solid fa-pen-to-square"></i> 
+            Edit <i class="fa-solid fa-pen-to-square"></i>
           </div>
           <div class="delete-option">
-            Delete <i class="fa-solid fa-trash"></i> 
+            Delete <i class="fa-solid fa-trash"></i>
           </div>
         </div>
       </div>
-      
+
       <div class="confirmation-modal-overlay"></div>
       <div class="confirmation-modal">
         <p>Are you sure?</p>
@@ -115,45 +134,47 @@
           <span>No</span>
         </div>
       </div>
-      
+
       <div class="theme-overlay"></div>
       <div class="theme-container">
         <div class="theme">
           <h3>Themes</h3>
           <div class="theme-grid">
-            
             <div class="theme-cell green-apple-container">
-              <div id='green-apple' class="green-apple-background">
-                <div id='green-apple' class="green-apple">
-                  <div id='green-apple' class="secondary"></div>
-                  <div id='green-apple' class="primary"></div>
+              <div id="green-apple" class="green-apple-background">
+                <div id="green-apple" class="green-apple">
+                  <div id="green-apple" class="secondary"></div>
+                  <div id="green-apple" class="primary"></div>
                 </div>
               </div>
               <span>green apple</span>
             </div>
-            
+
             <div class="theme-cell midnight-dusk-container">
-              <div id='midnight-dusk' class="midnight-dusk-background">
-                <div id='midnight-dusk' class="midnight-dusk">
-                  <div id='midnight-dusk' class="secondary"></div>
-                  <div id='midnight-dusk' class="primary"></div>
+              <div id="midnight-dusk" class="midnight-dusk-background">
+                <div id="midnight-dusk" class="midnight-dusk">
+                  <div id="midnight-dusk" class="secondary"></div>
+                  <div id="midnight-dusk" class="primary"></div>
                 </div>
               </div>
               <span>midnight dusk</span>
             </div>
-            
+
             <div class="theme-cell lavender-container">
-              <div id='lavender' class="lavender-background">
-                <div id='lavender' class="lavender">
-                  <div id='lavender' class="secondary"></div>
-                  <div id='lavender' class="primary"></div>
+              <div id="lavender" class="lavender-background">
+                <div id="lavender" class="lavender">
+                  <div id="lavender" class="secondary"></div>
+                  <div id="lavender" class="primary"></div>
                 </div>
               </div>
               <span>lavender</span>
             </div>
-            
+
             <div class="theme-cell strawberry-daiquiri-container">
-              <div id="strawberry-daiquiri" class="strawberry-daiquiri-background">
+              <div
+                id="strawberry-daiquiri"
+                class="strawberry-daiquiri-background"
+              >
                 <div id="strawberry-daiquiri" class="strawberry-daiquiri">
                   <div id="strawberry-daiquiri" class="secondary"></div>
                   <div id="strawberry-daiquiri" class="primary"></div>
@@ -161,7 +182,7 @@
               </div>
               <span>strawberry daiquiri</span>
             </div>
-            
+
             <div class="theme-cell tako-container">
               <div id="tako" class="tako-background">
                 <div id="tako" class="tako">
@@ -171,9 +192,12 @@
               </div>
               <span>tako</span>
             </div>
-            
+
             <div class="theme-cell teal-and-turquoise-container">
-              <div id="teal-and-turquoise" class="teal-and-turquoise-background">
+              <div
+                id="teal-and-turquoise"
+                class="teal-and-turquoise-background"
+              >
                 <div id="teal-and-turquoise" class="teal-and-turquoise">
                   <div id="teal-and-turquoise" class="secondary"></div>
                   <div id="teal-and-turquoise" class="primary"></div>
@@ -181,7 +205,7 @@
               </div>
               <span>teal & turquoise</span>
             </div>
-            
+
             <div class="theme-cell tidal-wave-container">
               <div id="tidal-wave" class="tidal-wave-background">
                 <div id="tidal-wave" class="tidal-wave">
@@ -191,7 +215,7 @@
               </div>
               <span>tidal wave</span>
             </div>
-            
+
             <div class="theme-cell yin-and-yang-container">
               <div id="yin-and-yang" class="yin-and-yang-background">
                 <div id="yin-and-yang" class="yin-and-yang">
@@ -201,7 +225,7 @@
               </div>
               <span>yin & yang</span>
             </div>
-            
+
             <div class="theme-cell yotsuba-container">
               <div id="yotsuba" class="yotsuba-background">
                 <div id="yotsuba" class="yotsuba">
@@ -211,7 +235,7 @@
               </div>
               <span>yotsuba</span>
             </div>
-            
+
             <div class="theme-cell natural-sky-container">
               <div id="natural-sky" class="natural-sky-background">
                 <div id="natural-sky" class="natural-sky">
@@ -221,121 +245,79 @@
               </div>
               <span>natural sky</span>
             </div>
-            
           </div>
         </div>
       </div>
-      
     </header>
-    
+
     <main class="deck-section">
       <i class="fa-solid fa-circle-play"></i>
       <h2>Deck</h2>
-      <div class="deck-section-container">
-       <!-- <div class="deck">
-          <div class="deck-title">
-            <div class="deck-tag">
-              <span>1</span>
-            </div>
-            <h2>Dada</h2>
-            <p>dada is the cutest</p>
-            <i class="fa-solid fa-ellipsis-vertical"></i>
-          </div>
-          <div class="deck-items">
-            <p>items</p>
-            <span>26</span>
-          </div>
-        </div>
-
-        <div class="deck">
-          <div class="deck-title">
-            <div class="deck-tag">
-              <span>1</span>
-            </div>
-            <h2>Dada</h2>
-            <p>dada is the cutest</p>
-            <i class="fa-solid fa-ellipsis-vertical"></i>
-          </div>
-          <div class="deck-items">
-            <p>items</p>
-            <span>26</span>
-          </div>
-        </div>-->
-      </div>
+      <div class="deck-section-container"></div>
 
       <div class="choose-deck-overlay"></div>
       <div class="choose-deck-container">
-        
         <div class="circle-display"></div>
-        
+
         <div class="choose-deck-inner-container">
-          
           <div class="error-message-overlay"></div>
           <div class="error-message-container">
             <div class="error-message">
               Deck must contain a minimum of 5 cards
             </div>
-            <div class="ok-button">
-              Ok
-            </div>
+            <div class="ok-button">Ok</div>
           </div>
-          
+
+          <div class="unavailable-message-container">
+            <div class="unavailable-message">
+              Venture Forth, Valiant Player! While the feature you seek is not yet
+    within reach, fear not, for the development is underway. Immerse
+    yourself in the current challenges, for soon I'll unleash a gaming
+    marvel that will shatter expectations and introduce a fresh wave of
+    excitement. Stay vigilant, player, as this game evolves with my
+    unwavering determination to deliver an extraordinary experience tailored
+    just for you!      </div>
+            <div class="ok-btn">Ok</div>
+          </div>
+
           <div class="choose-game-method-overlay"></div>
           <div class="choose-game-method-container">
-            <div class="slide-option">
-              Slide
-            </div>
-            <div class="select-option">
-              Select
-            </div>
-            <div class="writing-option">
-              Writing
-            </div>
-            <div class="mix-option">
-              Mix
-            </div>
+            <div class="slide-option">Slide</div>
+            <div class="select-option">Select</div>
+            <div class="writing-option">Writing</div>
+            <div class="mix-option">Mix</div>
           </div>
-          
+
           <h3>Choose Deck</h3>
-          
-          <div class="choose-deck">
-             <!--<div class="choose-deck-single">
-                <div class="choose-deck-title">
-                  <div class="choose-deck-tag">
-                    <span>1</span>
-                  </div>
-                  <h2>Dada</h2>
-                </div>
-              </div>
-                      
-              <div class="choose-deck-single">
-                <div class="choose-deck-title">
-                  <div class="choose-deck-tag">
-                    <span>1</span>
-                  </div>
-                  <h2>Dada</h2>
-                </div>
-              </div> -->
-          </div>
+
+          <div class="choose-deck"></div>
         </div>
       </div>
-      
     </main>
-      
-      <div class="modal-overlay"></div>
-      <div class="cardname-modal">
-        <i class="fa-solid fa-xmark"></i>
-        <h2>
-        </h2>
-      </div>
-      
-      <div class="description-modal">
-        <i class="fa-solid fa-xmark"></i>
-        <p>
-        </p>
-      </div>
-    
-    
+
+    <div class="modal-overlay"></div>
+    <div class="cardname-modal">
+      <i class="fa-solid fa-xmark"></i>
+      <h2></h2>
+    </div>
+
+    <div class="description-modal">
+      <i class="fa-solid fa-xmark"></i>
+      <p></p>
+    </div>
+
+    <!--     <div class="unavailable-message">
+  <div class="message">
+    Venture Forth, Valiant Player! While the feature you seek is not yet
+    within reach, fear not, for the development is underway. Immerse
+    yourself in the current challenges, for soon I'll unleash a gaming
+    marvel that will shatter expectations and introduce a fresh wave of
+    excitement. Stay vigilant, player, as this game evolves with my
+    unwavering determination to deliver an extraordinary experience tailored
+    just for you!"
+  </div>
+</div> -->
+
     <script type="module" src="../js/home.js" charset="utf-8"></script>
   </body>
 </html>

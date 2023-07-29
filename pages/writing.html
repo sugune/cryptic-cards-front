@@ -3,9 +3,66 @@
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <title>writing</title>
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/60018bc0e9.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/writing.css" />
   </head>
   <body>
-    <h1>writing</h1>
+    <header class="writing-header">
+      <div class="writing-header-container">
+        <div class="writing-header-image">
+          <img src="../assets/logos/" alt="logo" />
+        </div>
+        <div class="writing-x-btn">
+          <i class="fa-solid fa-plus"></i>
+        </div>
+      </div>
+    </header>
+
+    <main class="main-section">
+      <div class="card-section">
+        <div class="pagination-container">
+          <div class="swiper-pagination"></div>
+        </div>
+        <div class="writing-container swiper mySwiper">
+          <div class="writing-wrapper swiper-wrapper">
+            
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="navigation-section">
+        <button class="check-btn">check answer</button>
+      </div>
+
+      <div class="loading-spinner-container">
+        <div class="spinner">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
+        <p>Updating Mastery...</p>
+      </div>
+    </main>
+
+    <script type="module" charset="utf-8" src="../js/writing.js"></script>
   </body>
 </html>
