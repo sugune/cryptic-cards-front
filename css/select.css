@@ -1,6 +1,14 @@
 
 ::-webkit-scrollbar {
-  width: 0; /* Set the width of the scrollbar */
+  background-color: transparent;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-corner {
+  background-color: transparent;
 }
 
 /*
@@ -73,13 +81,10 @@ header
 }
 
 .select-container {
-  width: 100vw;
-  height: calc(100vh - 6rem);
+  width: 100%;
+  max-width: 500px;
+  height: 100%;
   padding-top: 1.5rem;
-}
-
-.select-wrapper {
-  
 }
 
 .select-slide {
@@ -143,32 +148,28 @@ header
   color: var(--primary-color);
   color: var(--light-color-700);
   margin-top: 1.5rem;
-  padding-bottom: 4rem;
+  padding-bottom: 2rem;
   font-size: .9rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
   width: 90%;
   overflow: scroll;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none;
 }
 
+.single-definition span {
+  pointer-events: none;
+}
 
 .single-definition {
   transition: all 1ms ease; 
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none;
+  word-break: break-all;
+  cursor: default;
   width: 100%;
-  min-height: 2.1rem;
-  max-height: 3rem;
-   background-image: linear-gradient(to bottom, var(--background-color-400) 0%, var(--background-color-500) 100%);
-   border-radius: 10px;
-   padding: 0 1rem;
-   padding-top: .2rem;
-   overflow: scroll;
-   border: 1px solid var(--primary-color);
-   border: 1px solid var(--light-color-700);
+  max-height: 4rem;
+  background-image: linear-gradient(to bottom, var(--background-color-400) 0%, var(--background-color-500) 100%);
+  border-radius: 10px;
+  padding: .5rem 1rem;
+  margin-bottom: 1.5rem;
+  overflow-y: scroll;
+  border: 1px solid var(--light-color-700);
 }
 
 .disable-single-definition {
@@ -192,6 +193,7 @@ header
 .pagination-container {
   position: relative;
   width: 90vw;
+  max-width: 550px;
 }
 
 

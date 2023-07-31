@@ -62,7 +62,7 @@ class UI {
       selectCard.id = `id_${card._id}`;
 
       const cardDefinitions = card.definition.map((def) => {
-        return `<li class="single-definition">${def}</li>`;
+        return `<li class="single-definition"><span>${def}</span></li>`;
       });
 
       selectCard.innerHTML = `

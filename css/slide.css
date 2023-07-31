@@ -1,6 +1,14 @@
 
 ::-webkit-scrollbar {
-  width: 0; /* Set the width of the scrollbar */
+  background-color: transparent;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: var(--primary-color);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-corner {
+  background-color: transparent;
 }
 
 /*
@@ -134,8 +142,6 @@ swiper
   color: var(--light-color-600);
   font-family: 'tsuki';
   letter-spacing: 1.2px;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none;
 }
 
 .cardname .fa-chevron-down {
@@ -222,8 +228,6 @@ swiper
   gap: .3rem;
   width: 90%;
   overflow: scroll;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none;
 }
 
 .list-definition .fa-chevron-down {
@@ -240,10 +244,6 @@ swiper
   top: .5rem;
   color: var(--primary-color);
   
-}
-
-.list-definition::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, and Opera */
 }
 
 

@@ -46,7 +46,7 @@ const themeBtn = document.querySelector(".theme-setting");
 const themeGrid = document.querySelector(".theme-grid");
 
 // play elements
-const playButton = document.querySelector(".deck-section > i");
+const playButton = document.querySelector(".play-button-container > i");
 const chooseDeckContainer = document.querySelector(".choose-deck-container");
 const chooseDeckOverlay = document.querySelector(".choose-deck-overlay");
 const chooseDeck = document.querySelector(".choose-deck");
