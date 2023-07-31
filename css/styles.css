@@ -73,7 +73,6 @@ body {
   background-color: ;
   text-align: center;
 }
-
 .section-content p {
   font-size: 0.8em;
   color: var(--light-color-600);
@@ -87,6 +86,45 @@ body {
   -webkit-text-fill-color: transparent;
   -moz-text-fill-color: transparent;
 }
+
+@media screen  and (min-width: 1150px) {
+  .section-content h2 {
+    font-size: 2.5rem;
+  }
+}
+
+@media screen  and (min-width: 950px) {
+  .section-container {
+    flex-direction: row;
+
+  }  
+  .section-image {
+    flex-grow: 1;
+    width: 50%;
+    text-align: left;
+    padding-left: 2rem;
+  }
+
+  .section-content p {
+    width: 70%;
+  }
+
+  .section-image img {
+    width: 250px;
+  }
+
+  .section-content h2 {
+    font-size: 2.2rem;
+  }
+  
+  .section-content {
+    text-align: left;
+    width: 50%;
+    flex-grow: 1;
+   
+  }
+}
+
   
 /*
 Login form
@@ -100,7 +138,8 @@ Login form
   transition: all 500ms ease;
   background-color: var(--background-color-300);
   min-height: 500px;
-  width: 90%;
+  width: 85%;
+  max-width: var(--max-form-width);
   border-radius: var(--border-radius-500);
   /*border: 1px solid var(--primary-color);*/
   display: flex;

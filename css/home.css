@@ -30,6 +30,7 @@ body {
   max-width: var(--max-width);
   display: flex;
   justify-content: space-between;
+  background-color: ;
 }
 
 .home-header-image img {
@@ -38,10 +39,10 @@ body {
 
 .home-header-image {
   position: relative;
-  background-color: ;
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 
 .create-deck i {
@@ -92,6 +93,7 @@ Create create-deck Window
   background-color: var(--background-color-300);
   border-radius: var(--border-radius-500);
   width: 90%;
+  max-width: var(--max-form-width);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -162,6 +164,7 @@ main deck section
   position: relative;
   height: var(--main-height);
   width: 100%;
+  /* max-width: var(--max-width); */
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -618,12 +621,14 @@ Profile
 .home-header-image img {
   position: absolute;
   transition: all 500ms ease;
+  transform: translateY(-50%);
+  top: 50%;
   left: 0;
   opacity: 1;
 }
 
 img.slide-header-logo {
-  left: -500px;
+  top: -500px;
   opacity: 0;
 }
 
@@ -645,6 +650,7 @@ img.slide-header-logo {
   position: absolute;
   top: 100%;
   width: 100%;
+  max-width: var(--max-form-width);
   height: var(--main-height);
   display: flex;
   justify-content: flex-start;
@@ -666,7 +672,7 @@ img.slide-header-logo {
 .profile {
   background-color: var(--background-color-300-0);
   width: 90%;
-  max-width: var(--max-width);
+  max-width: var(--max-form-width);
   display: flex;
   justify-content: flex-start;
   align-items: center;
