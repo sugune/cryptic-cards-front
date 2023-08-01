@@ -158,7 +158,7 @@ class UI {
 
   createChoicesFunctionality = (cards) => {
     const swiper = cards.pop();
-    console.log(cards);
+    
     cards.forEach((card) => {
       let lengthOfCorrectAnswer = card.dataset.lengthOfCorrectAnswer;
       const id = card.id.split("_")[1];
@@ -365,7 +365,7 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   if (!Theme.getTheme()) Theme.setTheme();
   const themeProperties = Theme.getTheme();
-  console.log(res);
+  
   const ui = new UI();
   ui.setTheme(themeProperties);
   ui.mainSelectFunctionality(currentCards);

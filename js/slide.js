@@ -199,7 +199,6 @@ class UI {
     
     correctStorage.textContent = judgment.correct
     incorrectStorage.textContent = judgment.incorrect
-    console.log(judgment)
   }
   
   updateJudgmentToDB() {
@@ -321,7 +320,6 @@ class UI {
     const windowHeight = window.innerHeight;
     const mainHeight = windowHeight - headerHeight;
     document.querySelector('.main-section').style.setProperty('--main-height', `${mainHeight}px`);
-    console.log('hello')
   }
     
   setTheme(themeProperties) {
@@ -358,7 +356,7 @@ window.addEventListener('DOMContentLoaded', async () => {
   
   if(!Theme.getTheme()) Theme.setTheme();
   const themeProperties = Theme.getTheme();
-  console.log(res)
+  
   const ui = new UI;
   ui.setTheme(themeProperties);
   ui.cardDisplayFunctionality([...currentCards]);

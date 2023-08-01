@@ -45,7 +45,6 @@ class UI {
         def.toLowerCase().replace(/\s/g, "")
       );
     });
-    console.log(cardDefinitions);
     return cards;
   }
 

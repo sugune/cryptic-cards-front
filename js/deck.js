@@ -90,7 +90,6 @@ class UI {
       definition: definitions,
       deck: deckId
     }
-    console.log(data)
     
     this.emptyDefinitionsValue(createDefinitionInputBoxes);
     const res = await Request.postReq(cardUrl, data, token);
@@ -361,9 +360,7 @@ class UI {
     
     async removeElement(cardId) {
       const element = document.getElementById(cardId);
-      console.log(element)
       const cardElement = element.parentElement;
-      console.log(cardElement)
       cardsContainer.removeChild(cardElement);
     }
     
@@ -378,7 +375,7 @@ class UI {
         }
         
         this.toggleCardDisplay();
-        console.log(e.currentTarget);
+        
         const element = e.currentTarget;
         const id = element.id;
         
@@ -400,14 +397,6 @@ class UI {
           li.textContent = def;
           cardDisplayDefinitionList.appendChild(li);
         });
-        
-        console.log(cardName)
-        console.log(definitions)
-        console.log(tagNumber)
-        console.log(cardDisplayTag)
-        
-        
-        
       });
     });
   }
@@ -492,7 +481,7 @@ class UI {
       div1.id = `id${card._id}`;
       div2.id = `id${card._id}`;
       div3.id = `id${card._id}`;
-      console.log(div1)
+      
       
       div1.textContent = `1`;
       div2.innerHTML = card.cardname;
@@ -535,7 +524,7 @@ class UI {
   
   async displayDeckName() {
     const res = await Request.getReq(`${deckUrl}${deckId}`, token);
-    console.log(res)
+    
     const deckInfo = res.data.deck;
     deckHeaderName.textContent = deckInfo.deckname;
   }

@@ -278,7 +278,6 @@ class UI {
       deckId = option.id;
       this.toggleOptionsWindow();
       this.populateEditWindow();
-      console.log("angelika");
     });
   }
 
@@ -426,7 +425,7 @@ class UI {
 
     const res = await Request.postReq(deckUrl, data, token);
     const newDeck = res.data;
-    console.log(res);
+    
     // handling the errors
     if (res.response && res.response.status === 400) {
       const deckNameRegex = /deckname/i;
@@ -461,7 +460,6 @@ class UI {
     this.toggleEditDeckWindow();
 
     const res = await Request.updateReq(`${deckUrl}${deckId}`, data, token);
-    console.log(res);
 
     // handling the errors
     if (res.response && res.response.status === 400) {
@@ -486,7 +484,6 @@ class UI {
   };
 
   async displayDeck(decks) {
-    console.log(decks);
     const deckLength = [...deckSectionContainer.querySelectorAll(".deck")]
       .length;
 
@@ -583,7 +580,6 @@ class UI {
     } else {
       localStorage.setItem("chosenDeckId", id);
     }
-    console.log(res);
   };
 
   editDeck(deck) {
@@ -646,7 +642,6 @@ class UI {
 
   editDeckChoice(deck) {
     const element = chooseDeck.querySelector(`#id_${deckId}`);
-    console.log(element);
     element.innerHTML = `
       <div class="choose-deck-title">
         <div class="choose-deck-tag">
@@ -717,7 +712,6 @@ class UI {
     const profileLogo = document.querySelector(".profile-logo img");
 
     const themeBackgrounds = document.querySelectorAll(".theme-cell > div");
-    console.log(themeBackgrounds);
     themeBackgrounds.forEach((background) => {
       background.classList.remove("focus-theme");
     });
@@ -725,7 +719,7 @@ class UI {
     const themeBackground = document.querySelector(
       themeProperties.focusedTheme
     );
-    console.log(themeBackground);
+    
     themeBackground.classList.add("focus-theme");
 
     headerLogo.src = `../assets/logos/${themeProperties.smallLogo}`;

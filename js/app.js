@@ -1,4 +1,4 @@
-import { TokenStorage, Request, Theme } from "./utility.js";
+import { TokenStorage, Request, Theme, authUrl } from "./utility.js";
 
 const login = document.querySelector(".login");
 const register = document.querySelector(".register");
@@ -65,7 +65,7 @@ class UI {
         const username = registerUsernameInput.value;
 
         data = { username, email, password };
-        url = "http://localhost:3000/api/v1/auth/register";
+        url = `${authUrl}register`;
         form = "register";
       }
 
@@ -74,27 +74,25 @@ class UI {
         const password = loginPasswordInput.value;
 
         data = { email, password };
-        url = "http://localhost:3000/api/v1/auth/login";
+        url = `${authUrl}login`;
         form = "login";
       }
-      console.log(data);
 
       const res = await Request.postReq(url, data);
-      console.log(res);
 
       // handling errors
 
       const errorMessage = res.hasOwnProperty("response")
         ? res.response.data.message
         : "";
-      console.log(errorMessage);
+     
       let formInput = "";
       const regexEmail = /email/i;
       const regexPassword = /password/i;
       const regexUsername = /username/i;
 
       if (form === "login" && errorMessage) {
-        console.log("error 1");
+      
         if (regexEmail.test(errorMessage)) {
           formInput = loginEmailInput;
         } else if (regexPassword.test(errorMessage)) {
@@ -142,9 +140,8 @@ class UI {
       //   return
       // }
 
-      console.log(res);
       const token = res.data.token;
-      console.log(token);
+      
       localStorage.setItem("username", res.data.username);
       if (token) {
         TokenStorage.saveToken(token);
@@ -162,7 +159,7 @@ class UI {
     if (element === registerPasswordInput) {
       error = element.parentNode.parentNode.lastElementChild;
     }
-    console.log(error);
+   
     error.classList.add("error");
     error.innerHTML = message;
 
