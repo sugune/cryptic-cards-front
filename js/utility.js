@@ -137,6 +137,11 @@ export class Theme {
   }
 }
 
-export const deckUrl = "https://cyruscard-server.onrender.com/api/v1/deck/";
-export const cardUrl = "https://cyruscard-server.onrender.com/api/v1/card/";
-export const authUrl = "https://cyruscard-server.onrender.com/api/v1/auth/";
+// render server
+// export const deckUrl = "https://cyruscard-server.onrender.com/api/v1/deck/";
+// export const cardUrl = "https://cyruscard-server.onrender.com/api/v1/card/";
+// export const authUrl = "https://cyruscard-server.onrender.com/api/v1/auth/";/
+// vercel server
+export const deckUrl = "https://cyruscards-server.vercel.app/api/v1/deck/";
+export const cardUrl = "https://cyruscards-server.vercel.app/api/v1/card/";
+export const authUrl = "https://cyruscards-server.vercel.app/api/v1/auth/";
