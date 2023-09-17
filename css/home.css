@@ -691,7 +691,14 @@ img.slide-header-logo {
   margin-top: 2rem;
 }
 
-div.profile-cell {
+a.profile-cell:focus,
+a.profile-cell:active {
+  outline:none;
+}
+div.profile-cell,
+a.profile-cell {
+  text-decoration: none;
+  display: block;
   transition: all 300ms ease;
   height: 5rem;
   width: 100%;
