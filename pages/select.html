@@ -2,59 +2,69 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1"
+    />
 
     <title>select</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://kit.fontawesome.com/60018bc0e9.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
-/>
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/60018bc0e9.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="icon"
+      href="../assets/logos/green-apple-icon.png"
+      type="image/png"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"
+    />
     <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
-    <link rel="stylesheet" href="../css/global.css"/>
-    <link rel="stylesheet" href="../css/select.css"/>
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/select.css" />
   </head>
   <body>
-      <header class="select-header">
-        <div class="select-header-container">
-          <div class="select-header-image">
-            <img src="../assets/logos/" alt="logo"/>
-          </div>
-          <div class="select-x-btn">
-            <i class="fa-solid fa-plus"></i>
-          </div>
+    <header class="select-header">
+      <div class="select-header-container">
+        <div class="select-header-image">
+          <img src="../assets/logos/" alt="logo" />
         </div>
-      </header>
-      
-      <main class="main-section">
-        <div class="pagination-container">
-          <div class="swiper-pagination"></div>
+        <div class="select-x-btn">
+          <i class="fa-solid fa-plus"></i>
         </div>
-        
-        
-        <div class="select-container swiper mySwiper">
-          <div class="select-wrapper swiper-wrapper">
-          </div>
+      </div>
+    </header>
+
+    <main class="main-section">
+      <div class="pagination-container">
+        <div class="swiper-pagination"></div>
+      </div>
+
+      <div class="select-container swiper mySwiper">
+        <div class="select-wrapper swiper-wrapper"></div>
+      </div>
+
+      <div class="loading-spinner-container">
+        <div class="spinner">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
         </div>
-        
-        
-        <div class="loading-spinner-container">
-          <div class="spinner">
-            <div class="rect1"></div>
-            <div class="rect2"></div>
-            <div class="rect3"></div>
-            <div class="rect4"></div>
-            <div class="rect5"></div>
-          </div>
-          <p>Updating Mastery...</p>
-        </div>
-        
-      </main>
-      
-      <script type="module" charset="utf-8" src="../js/select.js"></script>
+        <p>Updating Mastery...</p>
+      </div>
+    </main>
+
+    <script type="module" charset="utf-8" src="../js/select.js"></script>
   </body>
 </html>

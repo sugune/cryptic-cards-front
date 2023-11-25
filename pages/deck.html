@@ -2,15 +2,26 @@
 <html>
   <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>deck</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script src="https://kit.fontawesome.com/60018bc0e9.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../css/global.css"/>
-    <link rel="stylesheet" href="../css/deck.css"/>
+    <script
+      src="https://kit.fontawesome.com/60018bc0e9.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="../css/global.css" />
+   
+       <link
+      rel="icon"
+      href="../assets/logos/green-apple-icon.png"
+      type="image/png"
+    /> <link rel="stylesheet" href="../css/deck.css" />
   </head>
   <body>
     <header class="deck-header">
@@ -20,27 +31,37 @@
           <i class="fa-solid fa-plus"></i>
         </div>
       </div>
-      
+
       <div class="black-overlay"></div>
       <div class="card-window create-card-window">
         <h2>Create Card</h2>
         <form action="" class="card-window-form">
           <div class="input-box">
-            <input class="card-name-input create-card-name-input" type="text" id="card-name" required>
+            <input
+              class="card-name-input create-card-name-input"
+              type="text"
+              id="card-name"
+              required
+            />
             <label for="card-name">Card Name</label>
             <div class="">error</div>
           </div>
-          
-          
-          <div class="card-definition-input-boxes create-definition-input-boxes">
-            
+
+          <div
+            class="card-definition-input-boxes create-definition-input-boxes"
+          >
             <div class="input-box">
-              <input class="card-definition-input create-definition-input" type="text" id="card-definition" required>
+              <input
+                class="card-definition-input create-definition-input"
+                type="text"
+                id="card-definition"
+                required
+              />
               <label for="card-definition">Definition</label>
               <div class="">error</div>
             </div>
-            
-<!--            <div class="input-box">
+
+            <!--            <div class="input-box">
               <input class="card-definition-input create-definition-input" type="text" id="card-definition" required>
               <label for="card-definition">Definition</label>
               <span class="card-definition-delete-btn">
@@ -48,7 +69,7 @@
               </span>
               <div class="">error</div>
             </div>-->
-            
+
             <div class="card-definition-icon create-card-definition-icon">
               <i class="fa-solid fa-plus"></i>
             </div>
@@ -56,27 +77,35 @@
           <button class="create-card-form-btn" type="submit">Create</button>
         </form>
       </div>
-      
+
       <div class="black-overlay"></div>
       <div class="card-window edit-card-window">
         <h2>Edit Card</h2>
         <form action="" class="card-window-form">
           <div class="input-box">
-            <input class="card-name-input edit-card-name-input" type="text" id="card-name" required>
+            <input
+              class="card-name-input edit-card-name-input"
+              type="text"
+              id="card-name"
+              required
+            />
             <label for="card-name">Card Name</label>
             <div class="">error</div>
           </div>
-          
-          
+
           <div class="card-definition-input-boxes edit-definition-input-boxes">
-            
             <div class="input-box">
-              <input class="card-definition-input edit-definition-input" type="text" id="card-definition" required>
+              <input
+                class="card-definition-input edit-definition-input"
+                type="text"
+                id="card-definition"
+                required
+              />
               <label for="card-definition">Definition</label>
               <div class="">error</div>
             </div>
-            
-<!--            <div class="input-box">
+
+            <!--            <div class="input-box">
               <input class="card-definition-input create-definition-input" type="text" id="card-definition" required>
               <label for="card-definition">Definition</label>
               <span class="card-definition-delete-btn">
@@ -84,7 +113,7 @@
               </span>
               <div class="">error</div>
             </div>-->
-            
+
             <div class="edit-card-definition-icon card-definition-icon">
               <i class="fa-solid fa-plus"></i>
             </div>
@@ -92,20 +121,20 @@
           <button class="edit-card-form-btn" type="submit">Edit</button>
         </form>
       </div>
-      
+
       <div class="fixed-black-overlay"></div>
       <div class="options-container">
         <div class="options">
           <i class="fa-solid fa-xmark options-x-btn"></i>
           <div class="edit-option">
-            Edit <i class="fa-solid fa-pen-to-square"></i> 
+            Edit <i class="fa-solid fa-pen-to-square"></i>
           </div>
           <div class="delete-option">
-            Delete <i class="fa-solid fa-trash"></i> 
+            Delete <i class="fa-solid fa-trash"></i>
           </div>
         </div>
       </div>
-      
+
       <div class="confirmation-modal-overlay"></div>
       <div class="confirmation-modal">
         <p>Are you sure?</p>
@@ -114,40 +143,30 @@
           <span>No</span>
         </div>
       </div>
-      
+
       <div class="card-display-overlay"></div>
-        <div class="card-display">
-            <div class="card-tag">
-              <span>1</span>
-            </div>
-            <h2 class="card-display-cardname">
-              cyrus
-            </h2>
-            <div class="card-display-definition">
-              <ul class="definition-list">
-                <li class="definitiom-item">
-                  dada
-                </li>
-                <li class="definitiom-item">
-                  angelika
-                </li>
-                <li class="definitiom-item">
-                  myka
-                </li>
-              </ul>
-          </div>
+      <div class="card-display">
+        <div class="card-tag">
+          <span>1</span>
+        </div>
+        <h2 class="card-display-cardname">....</h2>
+        <div class="card-display-definition">
+          <ul class="definition-list">
+            <li class="definitiom-item">...</li>
+            <li class="definitiom-item">....</li>
+            <li class="definitiom-item">...</li>
+          </ul>
+        </div>
       </div>
-      
     </header>
-    
+
     <main class="cards-section">
       <div class="cards-section-navigation-btns">
         <button class="cards-btn focused">Cards</button>
         <button class="mastery-btn">Mastery</button>
-        
+
         <div class="card-mastery-container">
           <div class="card-mastery">
-            
             <!--<div class="card-mastery-number">-->
             <!--  11-->
             <!--</div>-->
@@ -157,7 +176,7 @@
             <!--<div class="card-mastery-proficiency">-->
             <!--  26-->
             <!--</div>-->
-            
+
             <!--<div class="card-mastery-number">-->
             <!--  11-->
             <!--</div>-->
@@ -167,13 +186,10 @@
             <!--<div class="card-mastery-proficiency">-->
             <!--  26-->
             <!--</div>-->
-            
           </div>
         </div>
-        
       </div>
       <div class="cards-container">
-        
         <!--<div class="card">
 
           <div class="card-content">
@@ -184,10 +200,7 @@
             <i class="fa-solid fa-ellipsis-vertical"></i>
           </div>
         </div>-->
-        
       </div>
-      
-      
     </main>
     <script type="module" charset="utf-8" src="../js/deck.js"></script>
   </body>

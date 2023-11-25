@@ -435,7 +435,7 @@ class UI {
       div.innerHTML = `
       <div class="card-content" id="${card._id}">
         <div class="card-tag">
-        <span>1</span>
+        <span>0</span>
         </div>
         <h2>${card.cardname}</h2>
         <i id="${card._id}" class="fa-solid fa-ellipsis-vertical"></i>
